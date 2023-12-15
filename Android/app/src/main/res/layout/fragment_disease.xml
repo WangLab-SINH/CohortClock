@@ -1,0 +1,775 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2020 xuexiangjys(xuexiangjys@163.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~       http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+
+
+
+
+
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextStyle.Explain"
+                    android:layout_margin="10dp"
+                    android:text="Diabetes：" />
+
+                <com.xuexiang.xui.widget.tabbar.TabControlView
+                    android:id="@+id/tcv_select1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tcv_defaultSelection="0"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextStyle.Explain"
+                    android:layout_margin="10dp"
+                    android:text="High Blood Pressure：" />
+
+                <com.xuexiang.xui.widget.tabbar.TabControlView
+                    android:id="@+id/tcv_select11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tcv_defaultSelection="0"/>
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextStyle.Explain"
+                    android:layout_margin="10dp"
+                    android:text="Obesity：" />
+
+                <com.xuexiang.xui.widget.tabbar.TabControlView
+                    android:id="@+id/tcv_select12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tcv_defaultSelection="0"/>
+
+            </LinearLayout>
+            <!--            <com.xuexiang.xui.widget.picker.XRangeSlider-->
+            <!--                android:id="@+id/xrs_bubble"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginStart="10dp"-->
+            <!--                android:layout_marginTop="16dp"-->
+            <!--                android:layout_marginEnd="10dp"-->
+            <!--                app:xrs_insideRangeLineColor="#0bd97f"-->
+            <!--                app:xrs_insideRangeLineStrokeWidth="5dp"-->
+            <!--                app:xrs_isShowBubble="true"-->
+            <!--                app:xrs_isShowRuler="true"-->
+            <!--                app:xrs_max="200"-->
+            <!--                app:xrs_min="50"-->
+            <!--                app:xrs_numberTextColor="#ffffff"-->
+            <!--                app:xrs_numberTextSize="15sp"-->
+            <!--                app:xrs_outsideRangeLineColor="#f0f0f0"-->
+            <!--                app:xrs_outsideRangeLineStrokeWidth="5dp"-->
+            <!--                app:xrs_rulerInterval="twenty" />-->
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/tv_bubble"-->
+            <!--                style="@style/TextStyle.Content"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_marginTop="16dp" />-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextStyle.Explain"
+                    android:layout_margin="10dp"
+                    android:text="Huntington Disease：" />
+
+                <com.xuexiang.xui.widget.tabbar.TabControlView
+                    android:id="@+id/tcv_select3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tcv_defaultSelection="0"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextStyle.Explain"
+                    android:layout_margin="10dp"
+                    android:text="Breast Cancer：" />
+
+                <com.xuexiang.xui.widget.tabbar.TabControlView
+                    android:id="@+id/tcv_select4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tcv_defaultSelection="0"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextStyle.Explain"
+                    android:layout_margin="10dp"
+                    android:text="Breast Cancer：" />
+
+                <com.xuexiang.xui.widget.tabbar.TabControlView
+                    android:id="@+id/tcv_select5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tcv_defaultSelection="0"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextStyle.Explain"
+                    android:layout_margin="10dp"
+                    android:text="Cardiac Arrhythmia：" />
+
+                <com.xuexiang.xui.widget.tabbar.TabControlView
+                    android:id="@+id/tcv_select6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tcv_defaultSelection="0"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextStyle.Explain"
+                    android:layout_margin="10dp"
+                    android:text="Rheumatoid Arthritis：" />
+
+                <com.xuexiang.xui.widget.tabbar.TabControlView
+                    android:id="@+id/tcv_select7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tcv_defaultSelection="0"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextStyle.Explain"
+                    android:layout_margin="10dp"
+                    android:text="Colitis：" />
+
+                <com.xuexiang.xui.widget.tabbar.TabControlView
+                    android:id="@+id/tcv_select8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tcv_defaultSelection="0"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextStyle.Explain"
+                    android:layout_margin="10dp"
+                    android:text="Mental Depression：" />
+
+                <com.xuexiang.xui.widget.tabbar.TabControlView
+                    android:id="@+id/tcv_select9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tcv_defaultSelection="0"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextStyle.Explain"
+                    android:layout_margin="10dp"
+                    android:text="Non-alcoholic Fatty Liver Disease：" />
+
+                <com.xuexiang.xui.widget.tabbar.TabControlView
+                    android:id="@+id/tcv_select10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tcv_defaultSelection="0"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextStyle.Explain"
+                    android:layout_margin="10dp"
+                    android:text="Heart Diseases：" />
+
+                <com.xuexiang.xui.widget.tabbar.TabControlView
+                    android:id="@+id/tcv_select13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tcv_defaultSelection="0"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextStyle.Explain"
+                    android:layout_margin="10dp"
+                    android:text="Anxiety：" />
+
+                <com.xuexiang.xui.widget.tabbar.TabControlView
+                    android:id="@+id/tcv_select14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tcv_defaultSelection="0"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextStyle.Explain"
+                    android:layout_margin="10dp"
+                    android:text="Degenerative Disease：" />
+
+                <com.xuexiang.xui.widget.tabbar.TabControlView
+                    android:id="@+id/tcv_select15"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tcv_defaultSelection="0"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextStyle.Explain"
+                    android:layout_margin="10dp"
+                    android:text="Attention deficit hyperactivity disorder：" />
+
+                <com.xuexiang.xui.widget.tabbar.TabControlView
+                    android:id="@+id/tcv_select16"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tcv_defaultSelection="0"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextStyle.Explain"
+                    android:layout_margin="10dp"
+                    android:text="Immunologic Deficiency Syndromes：" />
+
+                <com.xuexiang.xui.widget.tabbar.TabControlView
+                    android:id="@+id/tcv_select17"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tcv_defaultSelection="0"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextStyle.Explain"
+                    android:layout_margin="10dp"
+                    android:text="Mood swings：" />
+
+                <com.xuexiang.xui.widget.tabbar.TabControlView
+                    android:id="@+id/tcv_select18"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tcv_defaultSelection="0"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextStyle.Explain"
+                    android:layout_margin="10dp"
+                    android:text="Fatigue：" />
+
+                <com.xuexiang.xui.widget.tabbar.TabControlView
+                    android:id="@+id/tcv_select19"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tcv_defaultSelection="0"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextStyle.Explain"
+                    android:layout_margin="10dp"
+                    android:text="Seasonal Affective Disorder：" />
+
+                <com.xuexiang.xui.widget.tabbar.TabControlView
+                    android:id="@+id/tcv_select20"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tcv_defaultSelection="0"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextStyle.Explain"
+                    android:layout_margin="10dp"
+                    android:text="Colon Cancer：" />
+
+                <com.xuexiang.xui.widget.tabbar.TabControlView
+                    android:id="@+id/tcv_select21"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tcv_defaultSelection="0"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextStyle.Explain"
+                    android:layout_margin="10dp"
+                    android:text="Pediatric Obesity：" />
+
+                <com.xuexiang.xui.widget.tabbar.TabControlView
+                    android:id="@+id/tcv_select22"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tcv_defaultSelection="0"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextStyle.Explain"
+                    android:layout_margin="10dp"
+                    android:text="Manic：" />
+
+                <com.xuexiang.xui.widget.tabbar.TabControlView
+                    android:id="@+id/tcv_select23"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tcv_defaultSelection="0"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextStyle.Explain"
+                    android:layout_margin="10dp"
+                    android:text="Learning Disabilities：" />
+
+                <com.xuexiang.xui.widget.tabbar.TabControlView
+                    android:id="@+id/tcv_select24"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tcv_defaultSelection="0"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextStyle.Explain"
+                    android:layout_margin="10dp"
+                    android:text="Gastroesophageal reflux disease：" />
+
+                <com.xuexiang.xui.widget.tabbar.TabControlView
+                    android:id="@+id/tcv_select25"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tcv_defaultSelection="0"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextStyle.Explain"
+                    android:layout_margin="10dp"
+                    android:text="Intestinal Diseases：" />
+
+                <com.xuexiang.xui.widget.tabbar.TabControlView
+                    android:id="@+id/tcv_select26"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tcv_defaultSelection="0"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextStyle.Explain"
+                    android:layout_margin="10dp"
+                    android:text="Septic Shock：" />
+
+                <com.xuexiang.xui.widget.tabbar.TabControlView
+                    android:id="@+id/tcv_select27"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tcv_defaultSelection="0"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextStyle.Explain"
+                    android:layout_margin="10dp"
+                    android:text="Irritable Mood：" />
+
+                <com.xuexiang.xui.widget.tabbar.TabControlView
+                    android:id="@+id/tcv_select28"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tcv_defaultSelection="0"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextStyle.Explain"
+                    android:layout_margin="10dp"
+                    android:text="Insufficient Sleep Syndrome：" />
+
+                <com.xuexiang.xui.widget.tabbar.TabControlView
+                    android:id="@+id/tcv_select29"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tcv_defaultSelection="0"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextStyle.Explain"
+                    android:layout_margin="10dp"
+                    android:text="Systemic Inflammatory Response Syndrome：" />
+
+                <com.xuexiang.xui.widget.tabbar.TabControlView
+                    android:id="@+id/tcv_select30"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tcv_defaultSelection="0"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextStyle.Explain"
+                    android:layout_margin="10dp"
+                    android:text="Excessive daytime sleepiness：" />
+
+                <com.xuexiang.xui.widget.tabbar.TabControlView
+                    android:id="@+id/tcv_select31"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tcv_defaultSelection="0"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextStyle.Explain"
+                    android:layout_margin="10dp"
+                    android:text="Sleep disturbances ：" />
+
+                <com.xuexiang.xui.widget.tabbar.TabControlView
+                    android:id="@+id/tcv_select32"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tcv_defaultSelection="0"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextStyle.Explain"
+                    android:layout_margin="10dp"
+                    android:text="Alzheimer's disease：" />
+
+                <com.xuexiang.xui.widget.tabbar.TabControlView
+                    android:id="@+id/tcv_select33"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tcv_defaultSelection="0"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextStyle.Explain"
+                    android:layout_margin="10dp"
+                    android:text="Fragmented sleep：" />
+
+                <com.xuexiang.xui.widget.tabbar.TabControlView
+                    android:id="@+id/tcv_select34"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tcv_defaultSelection="0"/>
+
+            </LinearLayout>
+
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="89dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <com.xuexiang.xui.widget.textview.supertextview.SuperButton
+                    android:id="@+id/button_no"
+                    style="@style/SuperButton.Blue"
+                    android:layout_marginRight="50dp"
+
+                    android:text="Cancel" />
+
+                <com.xuexiang.xui.widget.textview.supertextview.SuperButton
+                    android:id="@+id/button_yes"
+                    style="@style/SuperButton.Blue"
+
+
+                    android:text="Save" />
+
+
+
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</LinearLayout>

@@ -1,0 +1,340 @@
+<!--
+  ~ Copyright (C) 2021 xuexiangjys(xuexiangjys@163.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~       http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--    <script src="echarts.min.js"></script>-->
+    <!--    <script src="echarts.js"></script>-->
+    <!--    <script src="echarts-gl.js"></script>-->
+    <!--    <script src="chart/lib/echarts.min.js"></script>-->
+    <!--    <script src="chart/js/echarts-all.js"></script>-->
+    <script src="chart/js/echarts.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+
+<style>.box { justify-content:center; display:flex; flex-wrap:wrap;  }; </style>
+<div class="box">
+    <div id="view1" class="chart-container" style="width: 470px;height: 300px;"></div>
+    <div id="view2" class="chart-container" style="width: 470px;height: 300px;"></div>
+    <div id="view3" class="chart-container" style="width: 470px;height: 300px;"></div>
+    <div id="view4" class="chart-container" style="width: 470px;height: 300px;"></div>
+    <script>
+        var myCharts2=echarts.init(document.getElementById("view1"));
+        var myCharts3=echarts.init(document.getElementById("view2"));
+         var myCharts4=echarts.init(document.getElementById("view3"));
+        var myCharts5=echarts.init(document.getElementById("view4"));
+
+
+        function setView1(){
+            //这里访问安卓代码
+
+
+            var data1=eval(android.getSleep(2)) ;
+
+            var x_axis = eval(android.getSleep(1)) ;
+
+        var option1={
+            tooltip : {
+            borderWidth: 0,
+                trigger: 'axis',
+<!--                axisPointer: {-->
+<!--                    type: 'cross',-->
+<!--                    label: {-->
+<!--                        backgroundColor: '#6a7985'-->
+<!--                    }-->
+<!--                },-->
+
+            },
+            legend: {
+                data: ['入睡时间'],
+                selected:{'入睡时间':true}
+            },
+            xAxis:
+            {
+                type : 'category',
+               data : x_axis,
+
+                axisTick: {
+                    alignWithLabel: true,
+
+                    }
+            }
+             ,
+            yAxis:
+                {
+                    type:'value',
+                    max:24,
+                    min:0,
+                    splitLine: {
+                    show: false,
+
+                    lineStyle:{
+                        show: true,
+                        width: 1,
+                        opacity:1,
+                        curveness: 0,
+                        type: "solid"
+                        }
+                     }
+
+                }
+            ,
+
+            series:[
+            {
+                    name:'入睡时间',
+                    connectNulls: true,
+                    type:'line',
+                    data:data1,
+                    lineStyle:{
+                        color:'#655432',
+
+                    },
+
+
+                    itmeStyle:{
+                        color:"#fe3332"
+                    },
+                    hoverAnimation: true,
+                    zlevel: 0,
+                    z: 0,
+
+                    areaStyle: {
+                        opacity: 0
+
+                    },
+            }
+
+
+
+            ]
+
+        };
+
+
+        //填充Dom  div必须具备高宽
+        myCharts2.setOption(option1);
+        }
+
+
+
+
+
+
+
+
+        function setView2(){
+            //这里访问安卓代码
+
+
+
+            var data2=eval(android.getSleep(3)) ;
+            var x_axis = eval(android.getSleep(1)) ;
+
+        var option2={
+            tooltip : {
+            borderWidth: 0,
+                trigger: 'axis',
+<!--                axisPointer: {-->
+<!--                    type: 'cross',-->
+<!--                    label: {-->
+<!--                        backgroundColor: '#6a7985'-->
+<!--                    }-->
+<!--                },-->
+
+            },
+            legend: {
+                data: ['起床时间'],
+                selected:{'起床时间':true}
+            },
+            xAxis:
+            {
+                type : 'category',
+               data : x_axis,
+
+                axisTick: {
+                    alignWithLabel: true,
+
+                    }
+            }
+             ,
+            yAxis:
+                {
+                    type:'value',
+                    max:24,
+                    min:0,
+                    splitLine: {
+                    show: false,
+
+                    lineStyle:{
+                        show: true,
+                        width: 1,
+                        opacity:1,
+                        curveness: 0,
+                        type: "solid"
+                        }
+                     }
+
+                }
+            ,
+            series:[
+
+            {
+                    name:'起床时间',
+                    connectNulls: true,
+                    type:'line',
+                    data:data2,
+                    lineStyle:{
+                        color:'#655432',
+
+                    },
+
+
+                    itmeStyle:{
+                        color:"#fe3332"
+                    },
+                    hoverAnimation: true,
+                    zlevel: 0,
+                    z: 0,
+
+                    areaStyle: {
+                        opacity: 0
+
+                    },
+            }
+
+
+
+            ]
+
+        };
+
+
+        //填充Dom  div必须具备高宽
+        myCharts4.setOption(option2);
+        }
+
+
+        function setView3(){
+            var data1=eval(android.getSleep1(2)) ;
+            var x_axis=eval(android.getSleep1(1))
+
+            var option3 = {
+
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: x_axis,
+                axisTick: {
+                    alignWithLabel: true,
+
+                    }
+             },
+            yAxis: {
+                type: 'value'
+            },
+            series: [{
+                data: data1,
+                type: 'line',
+                smooth: true,
+                lineStyle: {
+                    width: 0
+                },
+            showSymbol: false,
+            areaStyle: {
+                opacity: 0.8,
+                color: '#B5ECE7'
+            },
+            emphasis: {
+                focus: 'series'
+            },
+                showBackground: true,
+                backgroundStyle: {
+                    color: 'rgba(180, 180, 180, 0.2)'
+                    }
+                }]
+            };
+
+            myCharts3.setOption(option3)
+
+
+        }
+
+
+          function setView4(){
+            var data1=eval(android.getSleep1(3)) ;
+            var x_axis=eval(android.getSleep1(1))
+
+            var option4 = {
+
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: x_axis,
+                axisTick: {
+                    alignWithLabel: true,
+
+                    }
+             },
+            yAxis: {
+                type: 'value'
+            },
+            series: [{
+                data: data1,
+                type: 'line',
+                smooth: true,
+                lineStyle: {
+                    width: 0
+                },
+            showSymbol: false,
+            areaStyle: {
+                opacity: 0.8,
+                color: '#B5ECE7'
+            },
+            emphasis: {
+                focus: 'series'
+            },
+                showBackground: true,
+                backgroundStyle: {
+                    color: 'rgba(180, 180, 180, 0.2)'
+                    }
+                }]
+            };
+
+            myCharts5.setOption(option4)
+
+
+        }
+
+
+
+        setView1();
+        setView2();
+        setView3();
+        setView4();
+
+
+    </script>
+</div>
+</body>
+</html>
+

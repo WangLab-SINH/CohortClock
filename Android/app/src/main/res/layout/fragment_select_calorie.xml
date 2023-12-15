@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (C) 2020 xuexiangjys(xuexiangjys@163.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~       http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/xui_config_color_white"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="99dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        >
+
+
+
+<!--        <com.xuexiang.xui.widget.spinner.materialspinner.MaterialSpinner-->
+<!--            android:id="@+id/btn_calorie"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="40dp"-->
+<!--            android:layout_marginTop="?attr/xui_config_content_spacing_vertical"-->
+<!--            app:ms_entries="@array/calorie" />-->
+<!--        <com.xuexiang.xui.widget.tabbar.TabControlView-->
+<!--            android:id="@+id/tcv_select"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:gravity="center"-->
+<!--            app:tcv_defaultSelection="1"/>-->
+        <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+            android:id="@+id/btn_picker"
+            style="@style/RoundButton.Auto"
+            android:layout_width="304dp"
+            android:layout_height="73dp"
+
+            android:gravity="center"
+            android:text="食物种类选择"
+            android:textColor="@color/white"
+            android:textSize="60px"
+            app:rb_backgroundColor="@color/blue_end"
+            app:rb_borderColor="@color/blue_end"
+            app:rb_isRadiusAdjustBounds="true" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="99dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        >
+    <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+        android:id="@+id/btn_time_system"
+        style="@style/RoundButton.Auto"
+        android:layout_width="304dp"
+        android:layout_height="73dp"
+
+        android:gravity="center"
+        android:text="选择当天时间"
+        android:textColor="@color/white"
+        android:textSize="60px"
+        app:rb_backgroundColor="@color/web_colorAccent"
+        app:rb_borderColor="@color/web_colorAccent"
+        app:rb_isRadiusAdjustBounds="true" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="99dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        >
+
+        <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+            android:id="@+id/Button2"
+            style="@style/RoundButton.Auto"
+            android:layout_width="304dp"
+            android:layout_height="73dp"
+
+            android:gravity="center"
+            android:text="上传"
+            android:textColor="@color/white"
+
+            android:textSize="60px"
+            app:rb_backgroundColor="@color/colorPrimaryDark"
+            app:rb_borderColor="@color/colorPrimaryDark"
+            app:rb_isRadiusAdjustBounds="true" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2020 xuexiangjys(xuexiangjys@163.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~       http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:orientation="vertical">-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="241dp"-->
+<!--        android:orientation="vertical"></LinearLayout>-->
+
+<!--    <ScrollView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:clipChildren="false"-->
+<!--        android:scrollbars="none">-->
+
+
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:orientation="vertical">-->
+
+<!--            <TextView-->
+<!--                style="@style/TextStyle.Content"-->
+<!--                android:text="用户名：" />-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_margin="10dp"-->
+<!--                android:orientation="horizontal">-->
+
+<!--                <com.xuexiang.xui.widget.edittext.materialedittext.MaterialEditText-->
+<!--                    android:id="@+id/et_name"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="6"-->
+<!--                    android:hint="请输入英文字符或数字"-->
+<!--                    app:met_clearButton="true"-->
+<!--                    app:met_maxCharacters="15" />-->
+
+
+
+<!--            </LinearLayout>-->
+
+<!--            <TextView-->
+<!--                style="@style/TextStyle.Content"-->
+<!--                android:text="密码：" />-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_margin="10dp"-->
+<!--                android:orientation="horizontal">-->
+
+<!--                <com.xuexiang.xui.widget.edittext.materialedittext.MaterialEditText-->
+<!--                    android:id="@+id/et_passwd"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="6"-->
+<!--                    android:hint="请输入英文字符或数字"-->
+<!--                    app:met_clearButton="true"-->
+<!--                    app:met_maxCharacters="15" />-->
+
+
+
+<!--            </LinearLayout>-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:orientation="vertical">-->
+
+
+
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:orientation="horizontal">-->
+
+
+
+
+
+<!--                    <com.xuexiang.xui.widget.textview.supertextview.SuperButton-->
+<!--                        android:id="@+id/button_load"-->
+<!--                        style="@style/SuperButton.Blue"-->
+<!--                        android:text="登录"-->
+<!--                        android:layout_marginStart="20dp" />-->
+
+<!--                    <com.xuexiang.xui.widget.textview.supertextview.SuperButton-->
+<!--                        android:id="@+id/button_register"-->
+<!--                        style="@style/SuperButton.Green"-->
+<!--                        android:text="注册"-->
+<!--                        android:layout_marginStart="20dp" />-->
+
+
+<!--                </LinearLayout>-->
+
+
+
+
+<!--            </LinearLayout>-->
+
+
+<!--        </LinearLayout>-->
+
+<!--    </ScrollView>-->
+<!--</LinearLayout>-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center_horizontal"
+        app:srcCompat="@mipmap/about_logo"
+        android:visibility="invisible"/>
+
+
+    <TextView
+        android:id="@+id/user_name"
+        style="@style/TextStyle.Title"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:text="Login"
+        android:textSize="30sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="vertical">
+
+
+
+
+
+
+
+
+
+    </LinearLayout>
+
+    <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+        android:id="@+id/menu_logout"
+        style="@style/InfoItem"
+        android:layout_marginTop="16dp"
+        app:sCenterTextColor="@color/xui_config_color_red"
+        app:sCenterTextString="Log out"
+        app:sDividerLineType="none" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="20dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/TextStyle.Explain"
+                android:layout_width="wrap_content"
+                android:text="登陆/注册代表您已阅读并同意"
+                android:textColor="@color/xui_config_color_primary_text" />
+
+            <com.xuexiang.xui.widget.alpha.XUIAlphaTextView
+                android:id="@+id/tv_user_protocol"
+                style="@style/TextStyle.Explain"
+                android:layout_width="wrap_content"
+                android:text="用户协议"
+                android:textColor="?attr/colorAccent" />
+
+            <TextView
+                style="@style/TextStyle.Explain"
+                android:layout_width="wrap_content"
+                android:text="和"
+                android:textColor="@color/xui_config_color_primary_text" />
+
+            <com.xuexiang.xui.widget.alpha.XUIAlphaTextView
+                android:id="@+id/tv_privacy_protocol"
+                style="@style/TextStyle.Explain"
+                android:layout_width="wrap_content"
+                android:text="隐私政策"
+                android:textColor="?attr/colorAccent" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+
+</LinearLayout>
