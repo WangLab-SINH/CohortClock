@@ -13,7 +13,7 @@ CohortClock has three components containing client side, server side and adminis
 
 * HTML administration page: http://39.100.73.118:3001/
 
-* Linux web server: Server image On Alibaba Cloud, the image id of the server is m-8vbevtc05ettdvrph0pa, you can load this image in Alibaba Cloud server, also, the server image can be downloaded from:
+* Linux web server: Server image On Alibaba Cloud, the image id of the server is m-8vbevtc05ettdvrph0pa, you can load this image in Alibaba Cloud server, also, the server image can be downloaded from: https://198.11.175.199/cohortclockcloud_m-8vbevtc05ettdvrph0pa_system.raw.tar.gz
 
 ## Introduction
 ### Android/IOS client side
