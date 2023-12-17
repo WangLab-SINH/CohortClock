@@ -36,8 +36,10 @@ By aggregating and analyzing the collected data, researchers can identify common
 <img src="./images/Example3.png" alt="Cohort Clock" title="Cohort Clock"/>
 
 ## Requirements
-* Android:
-
+### Android
+* Android Studio version 3.6.3
+* SDK version 28
+* Detailed package version [versions.gradle](https://github.com/WangLab-SINH/CohortClock/blob/main/Android/versions.gradle)
 
 
 ![LPDS_GIF_20231217_212131](https://github.com/WangLab-SINH/CohortClock/assets/87359159/5739c695-88c2-434f-ba30-70e83409a739)
