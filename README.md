@@ -39,7 +39,19 @@ By aggregating and analyzing the collected data, researchers can identify common
 ### Android
 * Android Studio version 3.6.3
 * SDK version 28
+* Java version 1.8
 * Detailed package version [versions.gradle](https://github.com/WangLab-SINH/CohortClock/blob/main/Android/versions.gradle)
+  
+Application Framework Construction: We utilize XUI (https://github.com/xuexiangjys/XUI) as the overall framework for the application. XUI is an open-source UI framework that offers rich templates as references for the interface framework. The advantage of using a unified UI framework is that it ensures consistent design styles across various interfaces within the mobile application. The flexible layout for the overall pages employs the FlexboxLayout framework provided by Google (https://github.com/google/flexbox-layout), allowing the software interface to adapt to screens of different sizes and proportions. Each page in the application belongs to an open-source XPageFragment class constructed based on Fragment (https://github.com/xuexiangjys/XPage), facilitating smooth page sliding, navigation, and data interaction. The data transfer between different interfaces in the application utilizes the open-source MMKV component (https://github.com/Tencent/MMKV), an efficient key-value pair transmission component for cross-page data transfer.
 
+Statistical Analysis of User Dietary Times and Implementation of Dietary Time Recommendation Page: To conveniently display the time points when users upload their dietary information and provide dietary time recommendations, we constructed an HTML page based on ECharts 3.0.0.2 version within the mobile application. ECharts is used to draw cumulative distribution charts and heat maps. The Android application is provided with a web environment and framework using the AgentWeb library (https://github.com/Justson/AgentWeb).
+
+Implementation of Food Image Capture and Selection Page: We employ the user-friendly image selector framework PictureSelector (https://github.com/LuckSiege/PictureSelector) for capturing, operations, and uploads of images. Images are compressed when uploaded to the server to save bandwidth and server resources. We convert images to Bitmap format and compress them.
+
+Implementation of Mobile Database: To allow users to quickly access the historical records of their uploaded data, it is essential to build a local database for storing data. Therefore, we use the SQLite framework on the Android platform for data storage, access, and modification.
+
+### IOS
+* Xcode version 15.0.1
+* Swift version 5
 
 ![LPDS_GIF_20231217_212131](https://github.com/WangLab-SINH/CohortClock/assets/87359159/5739c695-88c2-434f-ba30-70e83409a739)
