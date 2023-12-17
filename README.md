@@ -31,6 +31,7 @@ This tool provides a streamlined interface for managing user data received from 
 
 By aggregating and analyzing the collected data, researchers can identify common trends and patterns, offering valuable insights for future research and interventions. Basic statistical features within the administrator interface allow for simple data exploration, providing an initial overview of the collected data. Researchers can examine indicators such as meal frequency, time distribution, food group composition, weight changes, sleep quality, and more to discover associations and correlations.
 
+<img src="./images/Example3.png" alt="Cohort Clock" title="Cohort Clock"/>
 
 ## Requirements
 * Android:
