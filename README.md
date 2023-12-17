@@ -53,5 +53,18 @@ Implementation of Mobile Database: To allow users to quickly access the historic
 ### IOS
 * Xcode version 15.0.1
 * Swift version 5
+* IOS version >14.0
+
+Application Framework Construction: We use SnapKit (https://github.com/SnapKit/SnapKit) as the overall framework for the application. SnapKit is an open-source UI framework that provides rich templates as references for the interface framework. The advantage of using a unified UI framework is that it ensures consistent design styles across various interfaces within the mobile application. The data transfer between different interfaces in the application utilizes the open-source MMKV component (https://github.com/Tencent/MMKV), an efficient key-value pair transmission component for cross-page data transfer, which can also be used in the iOS version.
+
+Statistical Analysis of User Dietary Times and Implementation of Dietary Time Recommendation Page: To conveniently display the time points when users upload their dietary information and provide dietary time recommendations, we constructed an HTML page based on ECharts 3.0.0.2 version within the mobile application. ECharts is used to draw cumulative distribution charts and heat maps.
+
+Implementation of Food Image Capture and Selection Page: We use the open-source framework for the iOS system, LXPhotosManagerModule (https://github.com/LIXIANGXLee/LXPhotosManagerModule), for capturing, operations, and uploads of food images.
+
+Implementation of Mobile Database: To allow users to quickly access the historical records of their uploaded data, it is essential to build a local database for storing data. Therefore, we use the FMDB database for the iOS platform (https://github.com/ccgus/fmdb) for data storage.
+
+###Server
+* Python version 3.7.4
+* Python package version can be obtained from 
 
 ![LPDS_GIF_20231217_212131](https://github.com/WangLab-SINH/CohortClock/assets/87359159/5739c695-88c2-434f-ba30-70e83409a739)
