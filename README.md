@@ -65,6 +65,6 @@ Implementation of Mobile Database: To allow users to quickly access the historic
 
 ###Server
 * Python version 3.7.4
-* Python package version can be obtained from 
+* Python package version can be obtained from [requirements.txt](./images/requirements.txt)
 
 ![LPDS_GIF_20231217_212131](https://github.com/WangLab-SINH/CohortClock/assets/87359159/5739c695-88c2-434f-ba30-70e83409a739)
