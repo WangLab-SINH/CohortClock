@@ -7,10 +7,10 @@ DietClock has three components containing client side, server side and administr
 
 
 ## Mobile app download and demo address
-Android: 
-IOS: Since IOS cannot install untested software at will, and our app is not currently on the app store, we have released our beta software on TestLight, Apple's officially recommended software testing platform. If you'd like to install our IOS software, email the same email you used to register for AppleID to chiyuhao2018@sibs.ac.cn. We'll add you to our list of testers, and you'll be able to download our app on TestLight.
-Web administration side: 
-Linux web server:
+Android: &nbsp;
+IOS: Since IOS cannot install untested software at will, and our app is not currently on the app store, we have released our beta software on TestLight, Apple's officially recommended software testing platform. If you'd like to install our IOS software, email the same email you used to register for AppleID to chiyuhao2018@sibs.ac.cn. We'll add you to our list of testers, and you'll be able to download our app on TestLight.&nbsp;
+Web administration side: &nbsp;
+Linux web server:&nbsp;
 
 
 <video src="https://github.com/WangLab-SINH/CohortClock/assets/87359159/62377bc0-db6f-4d8c-b62e-ceae2b9f1802"></video>
