@@ -16,7 +16,9 @@ DietClock has three components containing client side, server side and administr
 * Linux web server: Server image On Alibaba Cloud, the image id of the server is m-8vbevtc05ettdvrph0pa, you can load this image in Alibaba Cloud server, also, the server image can be downloaded from:
 
 ## Introduction
-* Android/IOS client side: 
+* Android/IOS client side:
+
+The client mobile applications for both Android and iOS display dietary time recommendations based on the user's uploaded meal times, calculated to align with the user's dietary habits. Beneath the dietary recommendations in the dietary mode, users can view a probability density distribution graph of their dietary habits within a 24-hour time period. This graphical representation allows users to intuitively observe their own dietary patterns. Additionally, we have designed an image upload interface that enables users to choose photos from their albums or take new pictures by clicking the camera button. The images, compressed for efficiency, are synchronized with the upload timestamp and transmitted to the server for computation and storage. In case users forget to upload pictures during meals, they can click the "select time" button to manually choose the mealtime and upload corresponding images.
 
 * IOS:
 
