@@ -74,6 +74,19 @@ Implementation of Mobile Database: To allow users to quickly access the historic
 * Flask 2.1.1
 
 ## Usage
+### How to add entries on the administrator side and display them in the app
+Navigate to the "Add Body Metrics" tab on the administrator interface. Here, you will see the various types of Body Metrics data currently collected. To add a new entry, click on the "Add Parameters" button. This action will prompt a window where you can input the necessary information. Fill in the required details on the web page. After providing the information, it will automatically synchronize with the server. The server will then transmit the data to the mobile client. On the Body Metrics page of the mobile app, the newly added parameters will be seamlessly displayed.
+The information to be filled in on the web page includes:
+1）Body Metrics Name: The name of the metric you want to add.
+2) Metrics Query: The type of data for the metric. For instance, if it is continuous data, the mobile app's Body Metrics page will use a Ruler control for data collection. If it is discrete data, a text box will be used for data collection.
+3) Metrics Unit: The unit for the parameter, which will be synchronized and displayed in the mobile client. For example, the unit for weight could be kg, and for height, it could be cm. Discrete data types do not require a unit.
+4) If the metric involves continuous data, fill in the maximum, minimum, default values, and the interval for the Ruler control to generate the control accurately.
+5) If the newly added metric is capable of circadian rhythm calculation, select "True" in the "Is circadian" option. This will determine whether the collected data exhibits circadian rhythm characteristics.
+
+
+<video src="https://github.com/WangLab-SINH/CohortClock/assets/87359159/94a70453-c8c6-47a9-bca4-3ee71608b53d"></video>
+
+
 
 
 ![LPDS_GIF_20231217_212131](https://github.com/WangLab-SINH/CohortClock/assets/87359159/5739c695-88c2-434f-ba30-70e83409a739)
