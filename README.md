@@ -13,11 +13,15 @@ DietClock has three components containing client side, server side and administr
 
 * HTML administration page: http://39.100.73.118:3001/
 
-* Linux web server: Server image On Alibaba Cloud, server image link:
+* Linux web server: Server image On Alibaba Cloud, the image id of the server is m-8vbevtc05ettdvrph0pa, you can load this image in Alibaba Cloud server, also, the server image can be downloaded from:
 
+## Introduction
+* Android/IOS client side: 
 
+* IOS:
 
-
+## Requirements
+* Android:
 
 <video src="https://github.com/WangLab-SINH/CohortClock/assets/87359159/62377bc0-db6f-4d8c-b62e-ceae2b9f1802"></video>
 https://github.com/WangLab-SINH/CohortClock/assets/87359159/62377bc0-db6f-4d8c-b62e-ceae2b9f1802
