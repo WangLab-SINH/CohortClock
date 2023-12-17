@@ -20,6 +20,7 @@ CohortClock has three components containing client side, server side and adminis
 The client mobile applications for both Android and iOS display dietary time recommendations based on the user's uploaded meal times, calculated to align with the user's dietary habits. Beneath the dietary recommendations in the dietary mode, users can view a probability density distribution graph of their dietary habits within a 24-hour time period. This graphical representation allows users to intuitively observe their own dietary patterns. Additionally, we have designed an image upload interface that enables users to choose photos from their albums or take new pictures by clicking the camera button. The images, compressed for efficiency, are synchronized with the upload timestamp and transmitted to the server for computation and storage. In case users forget to upload pictures during meals, they can click the "select time" button to manually choose the mealtime and upload corresponding images.
 
 <img src="./images/Example1.png" alt="Cohort Clock" title="Cohort Clock"/>
+
 ![LPDS_GIF_20231217_212131](https://github.com/WangLab-SINH/CohortClock/assets/87359159/5739c695-88c2-434f-ba30-70e83409a739)
 
 An example for uploading photos from android app.
