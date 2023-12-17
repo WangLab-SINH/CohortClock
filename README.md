@@ -21,6 +21,8 @@ The client mobile applications for both Android and iOS display dietary time rec
 
 <img src="./images/Example1.png" alt="Cohort Clock" title="Cohort Clock"/>
 
+An example for uploading photos from android app.
+<video src="https://github.com/WangLab-SINH/CohortClock/assets/87359159/62377bc0-db6f-4d8c-b62e-ceae2b9f1802"></video>
 
 In addition to dietary images and meal times, we can also collect other body metrics related to time-restricted eating, such as weight and sleep duration, for correlation analysis with time-restricted eating patterns. Users can also modify and delete uploaded images, annotated weight information, and sleep duration information directly on the client application.
 
@@ -36,7 +38,6 @@ By aggregating and analyzing the collected data, researchers can identify common
 ## Requirements
 * Android:
 
-<video src="https://github.com/WangLab-SINH/CohortClock/assets/87359159/62377bc0-db6f-4d8c-b62e-ceae2b9f1802"></video>
-https://github.com/WangLab-SINH/CohortClock/assets/87359159/62377bc0-db6f-4d8c-b62e-ceae2b9f1802
+
 
 ![LPDS_GIF_20231217_212131](https://github.com/WangLab-SINH/CohortClock/assets/87359159/5739c695-88c2-434f-ba30-70e83409a739)
