@@ -63,8 +63,17 @@ Implementation of Food Image Capture and Selection Page: We use the open-source 
 
 Implementation of Mobile Database: To allow users to quickly access the historical records of their uploaded data, it is essential to build a local database for storing data. Therefore, we use the FMDB database for the iOS platform (https://github.com/ccgus/fmdb) for data storage.
 
-###Server
+### Server
 * Python version 3.7.4
-* Python package version can be obtained from [requirements.txt](./images/requirements.txt)
+* Python package version for server and administration side can be obtained from [requirements.txt](./images/requirements.txt)
+* MySQL 8.0.0
+
+### Administration html
+* Vue 3.3
+* Python 3.7.4
+* Flask 2.1.1
+
+## Usage
+
 
 ![LPDS_GIF_20231217_212131](https://github.com/WangLab-SINH/CohortClock/assets/87359159/5739c695-88c2-434f-ba30-70e83409a739)
