@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2020 xuexiangjys(xuexiangjys@163.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~       http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextStyle.Explain"
+                    android:layout_margin="10dp"
+                    android:text="性别：" />
+
+                <com.xuexiang.xui.widget.tabbar.TabControlView
+                    android:id="@+id/tcv_select"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tcv_defaultSelection="0"/>
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    style="@style/TextStyle.Content"
+                    android:layout_marginStart="10dp"
+                    android:text="体重" />
+
+                <!--                <EditText-->
+                <!--                    android:id="@+id/et_weight"-->
+                <!--                    style="@style/EditText.Normal"-->
+                <!--                    android:layout_width="0dp"-->
+                <!--                    android:layout_weight="1"-->
+                <!--                    android:inputType="numberDecimal"-->
+                <!--                    android:layout_marginStart="10dp"-->
+                <!--                    android:hint="请输入体重值"-->
+                <!--                    android:layout_height="?attr/xui_btn_view_height" />-->
+
+                <!--                <com.xuexiang.xui.widget.alpha.XUIAlphaButton-->
+                <!--                    android:id="@+id/btn_set"-->
+                <!--                    style="@style/Button.Primary.wrap"-->
+                <!--                    android:layout_marginStart="10dp"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:text="设值"/>-->
+
+                <!--                <com.xuexiang.xui.widget.alpha.XUIAlphaButton-->
+                <!--                    android:id="@+id/btn_get"-->
+                <!--                    style="@style/Button.Primary.wrap"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_marginStart="10dp"-->
+                <!--                    android:text="取值"/>-->
+
+            </LinearLayout>
+
+            <com.xuexiang.xui.widget.picker.RulerView
+                android:id="@+id/rulerView"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_margin="10dp"
+
+                app:rv_firstScale="57.3"
+                app:rv_minScale="0"
+                app:rv_maxScale="100"
+                app:rv_scaleCount="10"
+                app:rv_unit="kg"
+
+                app:rv_bgColor="#fcfffc"
+                app:rv_smallScaleColor="#aaaaaa"
+                app:rv_midScaleColor="#999999"
+                app:rv_largeScaleColor="#50b586"
+                app:rv_resultNumColor="#50b586"
+                app:rv_scaleNumColor="#666666"
+                app:rv_unitColor="#50b586"
+                app:rv_unitTextSize="10sp" />
+
+            <TextView
+                style="@style/TextStyle.Content.wrap"
+                android:layout_marginStart="10dp"
+                android:text="身高" />
+
+            <com.xuexiang.xui.widget.picker.RulerView
+                android:id="@+id/rulerView1"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_margin="10dp"
+
+                app:rv_firstScale="155.8"
+                app:rv_minScale="50"
+                app:rv_maxScale="230"
+                app:rv_scaleCount="5"
+                app:rv_unit="cm"
+
+                app:rv_bgColor="#fcfffc"
+                app:rv_smallScaleColor="@color/colorPrimary"
+                app:rv_midScaleColor="@color/colorPrimaryDark"
+                app:rv_largeScaleColor="@color/colorAccent"
+                app:rv_resultNumColor="#50b586"
+                app:rv_scaleNumColor="#666666"
+                app:rv_unitColor="#50b586"
+                app:rv_unitTextSize="10sp" />
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+
+
+
+
+                <com.xuexiang.xui.widget.textview.supertextview.SuperButton
+                    android:id="@+id/button_yes"
+                    style="@style/SuperButton.Blue"
+                    android:text="确认"
+                    android:layout_marginStart="20dp" />
+                <com.xuexiang.xui.widget.textview.supertextview.SuperButton
+                    android:id="@+id/button_skip"
+                    style="@style/SuperButton.Blue"
+                    android:text="跳过"
+                    android:layout_marginStart="20dp" />
+
+
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</LinearLayout>

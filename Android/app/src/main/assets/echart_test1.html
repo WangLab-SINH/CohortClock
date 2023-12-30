@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+　　<html lang="en">
+　　<head>
+　　<title>ECharts-基本线性图</title>
+<!--　　<script src="js/esl.js" charset="utf-8" type="text/javascript"></script>-->
+　　<script src="chart/lib/echarts.min.js"></script>
+　　</head>
+　　<body>
+　　<div id="main" style="height: 400px; width: 500px; float: left; border: 1px solid #ccc;
+　　padding: 10px;">
+　　</div>
+　　<div id="mainLine" style="height: 400px; width: 500px; float: left; border: 1px solid #ccc;
+　　padding: 10px;">
+　　</div>
+　　<div style="clear: both;">
+　　<h3>
+　　STEP DAY</h3>
+　　<p>
+　　我们只提供最直接、最具价值的信息，旨在：<a href="http://www.stepday.com/myblog/?echarts" target="_blank">www.stepday.com</a>
+　　</p>
+　　</div>
+　　<script type="text/javascript" language="javascript">
+　　// Step:4 require echarts and use it in the callback.
+　　// Step:4 动态加载echarts然后在回调函数中开始使用，注意保持按需加载结构定义图表路径
+　　require(
+　　[
+　　'echarts',
+　　'echarts/chart/bar', //按需加载图表关于bar图的部分
+　　'echarts/chart/line' //按需加载图表关于线性图的部分
+　　],
+　　DrawCharts
+　　);
+　　///将画多个图表的进行函数封装
+　　function DrawCharts(ec) {
+　　DrawColumnEChart(ec);
+　　DrawLineEChart(ec);
+　　}
+　　//创建ECharts柱状图图表
+　　function DrawColumnEChart(ec) {
+　　//--- 柱状图 ---
+　　var myChart = ec.init(document.getElementById('main'));
+　　//图表显示提示信息
+　　myChart.showLoading({
+　　text: "图表数据正在努力加载..."
+　　});
+　　myChart.hideLoading();
+　　myChart.setOption({
+　　title: {
+　　text: "柱状图"
+　　},
+　　tooltip: {
+　　trigger: 'axis'
+　　},
+　　legend: {
+　　data: ['stepday.com', 'tuiwosa.com']
+　　},
+　　toolbox: {
+　　show: false
+　　},
+　　calculable: true,
+　　xAxis: [
+　　{
+　　type: 'category',
+　　data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+　　}
+　　],
+　　yAxis: [
+　　{
+　　type: 'value',
+　　splitArea: { show: true }
+　　}
+　　],
+　　series: [
+　　{
+　　name: 'stepday.com',
+　　type: 'bar', //序列展现类型为柱状图
+　　data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
+　　},
+　　{
+　　name: 'tuiwosa.com',
+　　type: 'bar',
+　　data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
+　　}
+　　]
+　　});
+　　var ecConfig = require('echarts/config');
+　　//ECharts图表的click事件监听
+　　myChart.on("click", function () {
+　　alert("你点击我了!");
+　　});
+　　}
+　　//创建ECharts折线图图表
+　　function DrawLineEChart(ec) {
+　　//--- 折线图 ---
+　　var myLineChart = ec.init(document.getElementById('mainLine'));
+　　//图表显示提示信息
+　　myLineChart.showLoading({
+　　text: "图表数据正在努力加载..."
+　　});
+　　myLineChart.hideLoading();
+　　myLineChart.setOption({
+　　title: {
+　　text: "折线图"
+　　},
+　　tooltip: {
+　　trigger: 'axis'
+　　},
+　　legend: {
+　　data: ['stepday.com', 'tuiwosa.com']
+　　},
+　　toolbox: {
+　　show: false
+　　},
+　　calculable: true,
+　　xAxis: [
+　　{
+　　type: 'category',
+　　data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+　　}
+　　],
+　　yAxis: [
+　　{
+　　type: 'value',
+　　splitArea: { show: true }
+　　}
+　　],
+　　series: [
+　　{
+　　name: 'stepday.com',
+　　type: 'line', //序列展现类型为折线图
+　　data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
+　　},
+　　{
+　　name: 'tuiwosa.com',
+　　type: 'line',
+　　data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
+　　}
+　　]
+　　});
+　　var ecConfig = require('echarts/config');
+　　//ECharts图表的click事件监听
+　　myLineChart.on("click", function () {
+　　alert("你点击我了!");
+　　});
+　　}
+　　</script>
+　　</body>
+　　</html>

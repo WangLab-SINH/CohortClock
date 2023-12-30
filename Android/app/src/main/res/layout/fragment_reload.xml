@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (C) 2020 xuexiangjys(xuexiangjys@163.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~       http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/xui_config_color_white"
+    android:orientation="vertical">
+
+    <!--    <com.xuexiang.xui.widget.button.RippleView-->
+<!--        android:id="@+id/Button1"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="84dp"-->
+<!--        android:layout_marginTop="?attr/xui_config_content_spacing_horizontal"-->
+<!--        app:rv_type="doubleRipple">-->
+
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="100dp"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_marginStart="?attr/xui_config_content_spacing_horizontal"-->
+<!--            android:layout_marginEnd="?attr/xui_config_content_spacing_horizontal"-->
+<!--            android:background="@color/app_color_theme_2"-->
+<!--            android:gravity="center"-->
+<!--            android:text="选择图片"-->
+<!--            android:textColor="@color/xui_config_color_white"-->
+<!--            android:textSize="20sp" />-->
+<!--    </com.xuexiang.xui.widget.button.RippleView>-->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="118dp"
+        android:layout_weight="4"
+        android:layout_marginTop="?attr/xui_config_content_spacing_horizontal"
+        android:overScrollMode="never" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center">
+
+        <com.xuexiang.xui.widget.button.shadowbutton.ShadowButton
+            android:id="@+id/Button1"
+            android:layout_width="103dp"
+            android:layout_height="103dp"
+
+            android:layout_gravity="center"
+            android:background="@drawable/camera_photo333"
+            app:sb_shape_type="round" />
+
+
+    </LinearLayout>
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="99dp"
+        android:layout_weight="1"
+        android:gravity="center">
+
+        <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+            android:id="@+id/btn_time_system"
+            style="@style/RoundButton.Auto"
+            android:layout_width="304dp"
+            android:layout_height="73dp"
+
+            android:gravity="center"
+            android:text="Select time"
+            android:textColor="@color/white"
+            android:textSize="60px"
+            app:rb_backgroundColor="@color/web_colorAccent"
+            app:rb_borderColor="@color/web_colorAccent"
+            app:rb_isRadiusAdjustBounds="true" />
+
+
+        <!--    <com.xuexiang.xui.widget.alpha.XUIAlphaButton-->
+        <!--        android:id="@+id/btn_time_system"-->
+        <!--        style="@style/Button.Primary.wrap"-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="75dp"-->
+        <!--        android:layout_marginTop="20dp"-->
+        <!--        android:text="选择时间（只能补充上传当天数据）" />-->
+
+        <!--    <com.xuexiang.xui.widget.button.RippleView-->
+        <!--        android:id="@+id/Button2"-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="79dp"-->
+        <!--        android:layout_marginTop="?attr/xui_config_content_spacing_horizontal"-->
+        <!--        app:rv_type="doubleRipple">-->
+
+        <!--        <TextView-->
+        <!--            android:layout_width="408dp"-->
+        <!--            android:layout_height="96dp"-->
+        <!--            android:layout_gravity="center"-->
+        <!--            android:layout_marginStart="?attr/xui_config_content_spacing_horizontal"-->
+        <!--            android:layout_marginEnd="?attr/xui_config_content_spacing_horizontal"-->
+        <!--            android:background="@color/app_color_theme_2"-->
+        <!--            android:gravity="center"-->
+        <!--            android:text="上传"-->
+        <!--            android:textColor="@color/xui_config_color_white"-->
+        <!--            android:textSize="20sp" />-->
+
+        <!--    </com.xuexiang.xui.widget.button.RippleView>-->
+
+    </LinearLayout>
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="101dp"-->
+
+<!--        android:gravity="center">-->
+
+<!--        <com.xuexiang.xui.widget.button.roundbutton.RoundButton-->
+<!--            android:id="@+id/Button3"-->
+<!--            style="@style/RoundButton.Auto"-->
+<!--            android:layout_width="354dp"-->
+<!--            android:layout_height="73dp"-->
+
+<!--            android:gravity="center"-->
+<!--            android:text="更新体重/睡眠时间"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="60px"-->
+<!--            app:rb_backgroundColor="@color/colorPrimaryDark"-->
+<!--            app:rb_borderColor="@color/colorPrimaryDark"-->
+<!--            app:rb_isRadiusAdjustBounds="true" />-->
+<!--        &lt;!&ndash;    <TextView&ndash;&gt;-->
+<!--        &lt;!&ndash;        style="@style/TextStyle.Title"&ndash;&gt;-->
+<!--        &lt;!&ndash;        android:layout_height="match_parent"&ndash;&gt;-->
+<!--        &lt;!&ndash;        android:layout_gravity="center"&ndash;&gt;-->
+<!--        &lt;!&ndash;        android:text="@string/menu_trending" />&ndash;&gt;-->
+
+<!--    </LinearLayout>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="101dp"
+        android:layout_weight="1"
+        android:gravity="center">
+
+        <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+            android:id="@+id/Button2"
+            style="@style/RoundButton.Auto"
+            android:layout_width="304dp"
+            android:layout_height="73dp"
+
+            android:gravity="center"
+            android:text="Save"
+            android:textColor="@color/white"
+            android:textSize="60px"
+            android:visibility="visible"
+            app:rb_backgroundColor="@color/colorPrimaryDark"
+            app:rb_borderColor="@color/colorPrimaryDark"
+            app:rb_isRadiusAdjustBounds="true" />
+        <!--    <TextView-->
+        <!--        style="@style/TextStyle.Title"-->
+        <!--        android:layout_height="match_parent"-->
+        <!--        android:layout_gravity="center"-->
+        <!--        android:text="@string/menu_trending" />-->
+
+    </LinearLayout>
+
+
+</LinearLayout>

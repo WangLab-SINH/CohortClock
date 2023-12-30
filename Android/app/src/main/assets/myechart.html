@@ -1,0 +1,92 @@
+<!--
+  ~ Copyright (C) 2020 xuexiangjys(xuexiangjys@163.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~       http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Android使用Echarts示例</title>
+
+
+</head>
+
+<body>
+<div id="main" style="width: 100%; height: 350px;"></div>
+<script src="chart/lib/echarts.min.js"></script>
+<script src="chart/lib/echarts-all.js"></script>
+<script type="text/javascript">
+window.addEventListener("resize",function(){
+        option.chart.resize();
+});
+    //初始化路径
+    var myChart;
+     /**require.config({
+            paths: {
+                echarts: './'
+            }
+        });**/
+    //  通用属性定义
+    var options = {
+                title : {
+                    text : "Echart测试"
+                },
+                tooltip : {
+                    show : false
+                },
+                toolbox : {
+                    show : false
+                },
+            };
+
+
+        function doCreatChart(type,jsondata){
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: 'ECharts'
+            },
+            tooltip: {},
+            legend: {
+                data:['成绩']
+            },
+            xAxis: {
+                data: ["数学","语文","英语","政治","物理","化学"]
+            },
+            yAxis: {},
+            series: [{
+                name: '成绩',
+                type: type,
+                data: jsondata
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+
+        }
+
+
+    doCreatChart('line',[89,78,77,66,44,55]);
+    //createChart('bar',[89,78,77]);
+    //createChart('pie',[89,78,77]);
+    </script>
+</body>
+
+</html>

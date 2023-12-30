@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2020 xuexiangjys(xuexiangjys@163.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~       http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextStyle.Explain"
+                    android:layout_margin="10dp"
+                    android:text="Sex：" />
+
+                <com.xuexiang.xui.widget.tabbar.TabControlView
+                    android:id="@+id/tcv_select"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tcv_defaultSelection="0"/>
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    style="@style/TextStyle.Content"
+                    android:layout_marginStart="10dp"
+                    android:text="Weight" />
+
+<!--                <EditText-->
+<!--                    android:id="@+id/et_weight"-->
+<!--                    style="@style/EditText.Normal"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:inputType="numberDecimal"-->
+<!--                    android:layout_marginStart="10dp"-->
+<!--                    android:hint="请输入体重值"-->
+<!--                    android:layout_height="?attr/xui_btn_view_height" />-->
+
+<!--                <com.xuexiang.xui.widget.alpha.XUIAlphaButton-->
+<!--                    android:id="@+id/btn_set"-->
+<!--                    style="@style/Button.Primary.wrap"-->
+<!--                    android:layout_marginStart="10dp"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:text="设值"/>-->
+
+<!--                <com.xuexiang.xui.widget.alpha.XUIAlphaButton-->
+<!--                    android:id="@+id/btn_get"-->
+<!--                    style="@style/Button.Primary.wrap"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_marginStart="10dp"-->
+<!--                    android:text="取值"/>-->
+
+            </LinearLayout>
+
+            <com.xuexiang.xui.widget.picker.RulerView
+                android:id="@+id/rulerView"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_margin="10dp"
+
+                app:rv_firstScale="66.2"
+                app:rv_minScale="0"
+                app:rv_maxScale="100"
+                app:rv_scaleCount="10"
+                app:rv_unit="kg"
+
+                app:rv_bgColor="#fcfffc"
+                app:rv_smallScaleColor="#aaaaaa"
+                app:rv_midScaleColor="#999999"
+                app:rv_largeScaleColor="#50b586"
+                app:rv_resultNumColor="#50b586"
+                app:rv_scaleNumColor="#666666"
+                app:rv_unitColor="#50b586"
+                app:rv_unitTextSize="10sp" />
+
+            <TextView
+                style="@style/TextStyle.Content.wrap"
+                android:layout_marginStart="10dp"
+                android:text="Height" />
+
+            <com.xuexiang.xui.widget.picker.RulerView
+                android:id="@+id/rulerView1"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_margin="10dp"
+
+                app:rv_firstScale="167.1"
+                app:rv_minScale="50"
+                app:rv_maxScale="230"
+                app:rv_scaleCount="5"
+                app:rv_unit="cm"
+
+                app:rv_bgColor="#fcfffc"
+                app:rv_smallScaleColor="@color/colorPrimary"
+                app:rv_midScaleColor="@color/colorPrimaryDark"
+                app:rv_largeScaleColor="@color/colorAccent"
+                app:rv_resultNumColor="#50b586"
+                app:rv_scaleNumColor="#666666"
+                app:rv_unitColor="#50b586"
+                app:rv_unitTextSize="10sp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextStyle.Explain"
+                    android:layout_margin="10dp"
+                    android:text="Diabetes：" />
+
+                <com.xuexiang.xui.widget.tabbar.TabControlView
+                    android:id="@+id/tcv_select1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tcv_defaultSelection="0"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextStyle.Explain"
+                    android:layout_margin="10dp"
+                    android:text="High blood pressure：" />
+
+                <com.xuexiang.xui.widget.tabbar.TabControlView
+                    android:id="@+id/tcv_select11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tcv_defaultSelection="0"/>
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextStyle.Explain"
+                    android:layout_margin="10dp"
+                    android:text="Obesity：" />
+
+                <com.xuexiang.xui.widget.tabbar.TabControlView
+                    android:id="@+id/tcv_select12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tcv_defaultSelection="0"/>
+
+            </LinearLayout>
+<!--            <com.xuexiang.xui.widget.picker.XRangeSlider-->
+<!--                android:id="@+id/xrs_bubble"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="10dp"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:layout_marginEnd="10dp"-->
+<!--                app:xrs_insideRangeLineColor="#0bd97f"-->
+<!--                app:xrs_insideRangeLineStrokeWidth="5dp"-->
+<!--                app:xrs_isShowBubble="true"-->
+<!--                app:xrs_isShowRuler="true"-->
+<!--                app:xrs_max="200"-->
+<!--                app:xrs_min="50"-->
+<!--                app:xrs_numberTextColor="#ffffff"-->
+<!--                app:xrs_numberTextSize="15sp"-->
+<!--                app:xrs_outsideRangeLineColor="#f0f0f0"-->
+<!--                app:xrs_outsideRangeLineStrokeWidth="5dp"-->
+<!--                app:xrs_rulerInterval="twenty" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tv_bubble"-->
+<!--                style="@style/TextStyle.Content"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_marginTop="16dp" />-->
+            <TextView
+                style="@style/TextStyle.Explain"
+                android:layout_margin="10dp"
+                android:text="Work time：" />
+
+            <com.xuexiang.xui.widget.tabbar.TabControlView
+                android:id="@+id/tcv_select2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tcv_defaultSelection="0"/>
+            <TextView
+                style="@style/TextStyle.Content"
+                android:text="Do you have any otherdiseases：" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
+
+                <com.xuexiang.xui.widget.edittext.materialedittext.MaterialEditText
+                    android:id="@+id/et_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:hint="Please enter other diseases"
+                    app:met_clearButton="true"
+                    app:met_maxCharacters="25" />
+
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+
+
+
+
+                <com.xuexiang.xui.widget.textview.supertextview.SuperButton
+                    android:id="@+id/button_yes"
+                    style="@style/SuperButton.Blue"
+                    android:text="Confirm"
+                    android:layout_marginStart="20dp" />
+
+
+
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</LinearLayout>

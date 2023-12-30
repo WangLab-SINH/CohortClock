@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>clearbox图片浏览特效</title>
+    <link href="css/clearbox.css" rel="stylesheet" type="text/css" />
+    <script src="js/clearbox.js" type="text/javascript"></script>
+    <script src="js/jquery-1.11.2.min.js" type="text/javascript"></script>
+
+
+</head>
+<body>
+
+<style type="text/css">
+*{margin:0;padding:0;list-style-type:none;}
+a,img{border:0;}
+body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
+
+.playbox{width:840px;margin:50px auto;overflow:hidden;padding:20px 0px 0px 20px;border:solid 1px #ddd;}
+.playbox a{ height:360px; overflow:hidden; display:block; float:left; margin-right:20px;margin-bottom:20px; position:relative; text-decoration:none;}
+
+.playbox a img{max-width:260px;_width:expression(this.width > 260 ? "260px" : this.width);/*使ie6支持max-width*/ border:none; }
+
+.txt{position: absolute;left: 0;bottom: 0;width: 100%;height: 45px;line-height: 45px;text-align: center;color: #fff;background: rgba(0,0,0,0.6);}
+.txt h3{font-weight: normal; margin:0px}
+.txt p{
+	font-size: 14px;
+	display: block;
+	line-height: 20px;
+	-webkit-margin-before: 1em;
+	-webkit-margin-after: 1em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+	-moz-margin-before: 1em;
+	-moz-margin-after: 1em;
+	-moz-margin-start: 0px;
+	-moz-margin-end: 0px;
+}
+</style>
+
+<h2 style="margin:0 auto; width:840px; text-align:center; margin-top:50px;">点击美女，相册播放</h2>
+
+<div class="playbox">
+    <a href="#">
+        <img src="?" alt="" id = "photo0"/>
+        <p>object-fit:cover</p>
+    </a>
+    <a href="#">
+        <img src="?" alt="" id = "photo1"/>
+    </a>
+    <a href="#">
+        <img src="?" alt="" id = "photo2"/>
+    </a>
+    <a href="#">
+        <img src="?" alt="" id = "photo3"/>
+    </a>
+    <a href="#">
+        <img src="?" alt="" id = "photo4"/>
+    </a>
+    <a href="#">
+        <img src="?" alt="" id = "photo5"/>
+    </a>
+    <a href="#">
+        <img src="?" alt="" id = "photo6"/>
+    </a>
+    <a href="#">
+        <img src="?" alt="" id = "photo7"/>
+    </a>
+    <a href="#">
+        <img src="?" alt="" id = "photo8"/>
+    </a>
+    <a href="#">
+        <img src="?" alt="" id = "photo9"/>
+    </a>
+    <a href="#">
+        <img src="?" alt="" id = "photo10"/>
+    </a>
+    <a href="#">
+        <img src="?" alt="" id = "photo11"/>
+    </a>
+</div>
+
+<script type="text/javascript">
+//从底部上升的遮罩效果开始
+$(".playbox a").hover(function(){
+	$(this).find(".txt").stop().animate({height:"360px"},200);
+	$(this).find(".txt h3").stop().animate({paddingTop:"60px"},200);
+},function(){
+	$(this).find(".txt").stop().animate({height:"45px"},200);
+	$(this).find(".txt h3").stop().animate({paddingTop:"0px"},200);
+})
+//从底部上升的遮罩效果结
+
+</script>
+<script type="text/javascript">
+       var adres0= android.getT42Data(0);
+       document.getElementById('photo0').src = adres0;
+
+       var adres1= android.getT42Data(1);
+       document.getElementById('photo1').src = adres1;
+
+       var adres2= android.getT42Data(2);
+       document.getElementById('photo2').src = adres2;
+
+       var adres3= android.getT42Data(3);
+       document.getElementById('photo3').src = adres3;
+
+       var adres4= android.getT42Data(4);
+       document.getElementById('photo4').src = adres4;
+
+       var adres5= android.getT42Data(5);
+       document.getElementById('photo5').src = adres5;
+
+       var adres6= android.getT42Data(6);
+       document.getElementById('photo6').src = adres6;
+
+       var adres7= android.getT42Data(7);
+       document.getElementById('photo7').src = adres7;
+
+       var adres8= android.getT42Data(8);
+       document.getElementById('photo8').src = adres8;
+
+       var adres9= android.getT42Data(9);
+       document.getElementById('photo9').src = adres9;
+
+       var adres10= android.getT42Data(10);
+       document.getElementById('photo10').src = adres10;
+
+       var adres11= android.getT42Data(11);
+       document.getElementById('photo11').src = adres11;
+
+
+
+</script>
+</body>
+</html>

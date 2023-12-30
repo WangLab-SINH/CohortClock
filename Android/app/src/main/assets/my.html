@@ -1,0 +1,100 @@
+<!--
+  ~ Copyright (C) 2020 xuexiangjys(xuexiangjys@163.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~       http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<!--    <script src="echarts.min.js"></script>-->
+<!--    <script src="echarts.js"></script>-->
+<!--    <script src="echarts-gl.js"></script>-->
+    <script src="chart/lib/echarts.min.js"></script>
+    <script src="chart/lib/echarts-all.js"></script>
+    <title>Document</title>
+</head>
+<body>
+
+<div id="view" style="width: 600px;height: 300px;"></div>
+<script>
+        var myCharts=echarts.init(document.getElementById("view"));
+
+        function setView(){
+            //这里访问安卓代码
+            var data1=eval(android.getT5Data()) ;
+            //这里访问安卓代码
+            var data2=eval(android.getT5Data()) ;
+            //这里访问安卓代码
+            var data3=eval(android.getT5Data("12312"));
+            //对图像进行配置
+        var option={
+            tooltip : {
+            },
+            xAxis:
+            {
+                type : 'category',
+                data : ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun','123','343'],
+                axisTick: {
+                    alignWithLabel: true
+                    }
+            }
+             ,
+            yAxis:
+                {
+                    type:'value'
+                }
+            ,
+            grid:{
+
+            },
+            series:[
+                {
+                    name:'JS得到的值',
+                    type:'bar',
+                     data:data1
+                },
+                {
+                    name:'安卓得到的数据',
+                    type:'line',
+                    data:data2,
+                    lineStyle:{
+                        color:'#655432',
+
+                    },
+                    itmeStyle:{
+                        color:"#fe3332"
+                    },
+                    smooth:true
+                }
+            ]
+
+        };
+        //填充Dom  div必须具备高宽
+        myCharts.setOption(option);
+        }
+        setView();
+
+        //5秒刷新一次
+<!--        setInterval(function(){-->
+<!--            setView();-->
+<!--           // alert(android.getT5Data());-->
+<!--        },5000)-->
+
+    </script>
+</body>
+</html>
