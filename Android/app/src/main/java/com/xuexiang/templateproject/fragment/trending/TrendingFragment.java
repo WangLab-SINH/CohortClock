@@ -301,6 +301,8 @@ public class TrendingFragment extends BaseFragment {
 
     List<Integer> random_num = new ArrayList<>();
 
+    List<Integer> index_group = new ArrayList<>();
+
     int is_draw_debug_global = -1;
 
     String global_last_time = "";
@@ -346,8 +348,35 @@ public class TrendingFragment extends BaseFragment {
         myView.setHorizontalScrollBarEnabled(true);
         myView.getSettings().setJavaScriptEnabled(true);
         myView.addJavascriptInterface(this, "nativeMethod");
-//        myView.loadUrl("http://10.10.114.202:8080/#/");
-        myView.loadUrl("file:///android_asset/index.html");
+
+        String temp_res1 = MMKVUtils.getString("index_table_string", "");
+        String[] index_info = temp_res1.split("<");
+        List<String> index_raw = new ArrayList<>();
+        index_raw.add("Weight");
+        index_raw.add("Height");
+        index_raw.add("Diastolic blood pressure");
+        index_raw.add("Systolic blood pressure");
+        index_raw.add("Heart rate");
+        index_raw.add("Waist circumference");
+        index_raw.add("Gender");
+        index_raw.add("Age");
+        index_raw.add("Disease status");
+        index_raw.add("Exercise duration");
+        index_raw.add("Sleep time");
+        String new_index_name = "";
+        for(int i = 0; i < index_info.length;i++ ){
+            String temp_index_name = index_info[i].split(";")[2];
+            if(!index_raw.contains(temp_index_name)){
+                if(new_index_name.equals("")){
+                    new_index_name = new_index_name + temp_index_name;
+                }else{
+                    new_index_name = new_index_name + ";" + temp_index_name;
+                }
+            }
+        }
+        myView.loadUrl("file:///android_asset/index.html#/"+"?name="+new_index_name);
+//        myView.loadUrl("http://10.10.114.202:8080/#/"+"?name="+new_index_name);
+//        myView.loadUrl("file:///android_asset/index.html"+"&name=testA;testB");
         boolean isShowFood = MMKVUtils.getBoolean("IS_SHOW_FOOD", false);
 
         myView.setLayerType(View.LAYER_TYPE_SOFTWARE,null);
@@ -383,8 +412,10 @@ public class TrendingFragment extends BaseFragment {
             openNewPage(BodyIndexFragment.class,"null","temperature");
         }else if(TextUtils.equals(activityName, "Medicine")){
             openNewPage(BodyIndexFragment.class,"null","medicine");
-        }else if(TextUtils.equals(activityName, "Disease")){
+        }else if(TextUtils.equals(activityName, "Disease Status")){
             openNewPage(DiseaseFragment.class,"null","disease");
+        }else{
+            openNewPage(BodyIndexFragment.class,"null",activityName);
         }
     }
 
@@ -445,7 +476,35 @@ public class TrendingFragment extends BaseFragment {
             //这是让WebView 自己处理网页加载请求
             myView.setWebChromeClient(new WebChromeClient());
             //加载网页
-            myView.loadUrl("file:///android_asset/index.html");
+
+            String temp_res1 = MMKVUtils.getString("index_table_string", "");
+            String[] index_info = temp_res1.split("<");
+            List<String> index_raw = new ArrayList<>();
+            index_raw.add("Weight");
+            index_raw.add("Height");
+            index_raw.add("Diastolic blood pressure");
+            index_raw.add("Systolic blood pressure");
+            index_raw.add("Heart rate");
+            index_raw.add("Waist circumference");
+            index_raw.add("Gender");
+            index_raw.add("Age");
+            index_raw.add("Disease");
+            index_raw.add("Exercise duration");
+            index_raw.add("Sleep time");
+            String new_index_name = "";
+            for(int i = 0; i < index_info.length;i++ ){
+                String temp_index_name = index_info[i].split(";")[2];
+                if(!index_raw.contains(temp_index_name)){
+                    if(new_index_name.equals("")){
+                        new_index_name = new_index_name + temp_index_name;
+                    }else{
+                        new_index_name = new_index_name + ";" + temp_index_name;
+                    }
+                }
+            }
+            myView.loadUrl("file:///android_asset/index.html#/"+"?name="+new_index_name);
+
+            //myView.loadUrl("file:///android_asset/index.html");
             //myView.loadUrl("http://10.10.114.202:8080/#/");
             final Button btn = findViewById(R.id.xyg);
             boolean isShowFood = MMKVUtils.getBoolean("IS_SHOW_FOOD", false);
@@ -462,7 +521,12 @@ public class TrendingFragment extends BaseFragment {
                 //这是让WebView 自己处理网页加载请求
                 myView.setWebChromeClient(new WebChromeClient());
                 //加载网页
-                myView.loadUrl("file:///android_asset/index.html");
+
+                myView.loadUrl("file:///android_asset/index.html#/"+"?name="+new_index_name);
+
+
+
+                //myView.loadUrl("file:///android_asset/index.html");
 //                myView.loadUrl("http://10.10.114.202:8080/#/");
             }
         }

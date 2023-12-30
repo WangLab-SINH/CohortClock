@@ -136,7 +136,7 @@ public class UserGuideActivity extends AppCompatActivity implements View.OnClick
                 @Override
                 public void run() {
                     recLen--;
-                    tv.setText("跳过 " + recLen);
+                    tv.setText("Skip " + recLen);
                     if (recLen < 0) {
                         timer.cancel();
                         tv.setVisibility(View.GONE);//倒计时到0隐藏字体

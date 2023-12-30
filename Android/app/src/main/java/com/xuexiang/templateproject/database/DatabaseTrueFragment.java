@@ -465,14 +465,14 @@ public class DatabaseTrueFragment extends BaseFragment {
             case R.id.delete_button:
                 if(Button_flag == 0){
                     if(name_selected.size() == 0){
-                        XToastUtils.toast("请选择想要删除的数据");
+                        XToastUtils.toast("Please select the data you want to delete");
                     }
                     else{
                         int is_flag = 0;
                         DialogLoader.getInstance().showConfirmDialog(
                                 getContext(),
-                                "是否删除当前选中图片",
-                                getString(R.string.lab_yes),
+                                "Whether to delete the currently selected image",
+                               "Yes",
                                 new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
@@ -556,7 +556,7 @@ public class DatabaseTrueFragment extends BaseFragment {
 //                    }
                                             }
                                             else{
-                                                XToastUtils.toast("只可以删除当天时间");
+                                                XToastUtils.toast("Only the time of the current day can be deleted");
                                             }
 //                                            if(list_index != -1){
 //                                                while(cursor.moveToNext()){
@@ -659,7 +659,7 @@ public class DatabaseTrueFragment extends BaseFragment {
 
                                     }
                                 },
-                                getString(R.string.lab_no),
+                                "No",
 
                                 new DialogInterface.OnClickListener() {
                                     @Override
@@ -676,14 +676,14 @@ public class DatabaseTrueFragment extends BaseFragment {
                 }
                 else{
                     if(name_selected.size() == 0){
-                        XToastUtils.toast("请选择想要删除的数据");
+                        XToastUtils.toast("Please select the data you want to delete");
                     }
                     else{
                         int is_flag = 0;
                         DialogLoader.getInstance().showConfirmDialog(
                                 getContext(),
-                                "是否删除当前选中数据",
-                                getString(R.string.lab_yes),
+                                "Whether to delete the selected data",
+                                "Yes",
                                 new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
@@ -741,7 +741,7 @@ public class DatabaseTrueFragment extends BaseFragment {
 //                                                }
                                             }
                                             else{
-                                                XToastUtils.toast("只可以删除当天时间");
+                                                XToastUtils.toast("Only the time of the current day can be deleted");
                                             }
 
                                         }
@@ -825,7 +825,7 @@ public class DatabaseTrueFragment extends BaseFragment {
 
                                     }
                                 },
-                                getString(R.string.lab_no),
+                                "No",
 
                                 new DialogInterface.OnClickListener() {
                                     @Override

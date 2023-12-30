@@ -1459,7 +1459,7 @@ public class LocalEchartsFragment extends BaseFragment {
                 String user_name = cursor.getString(cursor.getColumnIndex("user_name"));
                 String user_time = cursor.getString(cursor.getColumnIndex("user_time"));
                 String photo_type = cursor.getString(cursor.getColumnIndex("photo_type"));
-                if(photo_type.equals("food")){
+                if(photo_type.equals("Yes")||photo_type.equals("food")){
                     String[] temp123 = user_time.split("-");
                     String temp_year = temp123[0].split("\\.")[0];
                     String temp_month = temp123[0].split("\\.")[1];
@@ -1666,7 +1666,7 @@ public class LocalEchartsFragment extends BaseFragment {
                 String user_name = cursor.getString(cursor.getColumnIndex("user_name"));
                 String user_time = cursor.getString(cursor.getColumnIndex("user_time"));
                 String photo_type = cursor.getString(cursor.getColumnIndex("photo_type"));
-                if(photo_type.equals("food")){
+                if(photo_type.equals("Yes")||photo_type.equals("food")){
                     String[] temp123 = user_time.split("-");
                     String temp_year = temp123[0].split("\\.")[0];
                     String temp_month = temp123[0].split("\\.")[1];
@@ -1855,7 +1855,7 @@ public class LocalEchartsFragment extends BaseFragment {
             String user_name = cursor.getString(cursor.getColumnIndex("user_name"));
             String user_time = cursor.getString(cursor.getColumnIndex("user_time"));
             String photo_type = cursor.getString(cursor.getColumnIndex("photo_type"));
-            if(photo_type.equals("food")){
+            if(photo_type.equals("Yes")||photo_type.equals("food")){
                 String[] temp123 = user_time.split("-");
                 String temp_year = temp123[0].split("\\.")[0];
                 String temp_month = temp123[0].split("\\.")[1];
@@ -1963,7 +1963,7 @@ public class LocalEchartsFragment extends BaseFragment {
             String photo_url = cursor.getString(cursor.getColumnIndex("photo_web_url"));
             String photo_cal = cursor.getString(cursor.getColumnIndex("photo_cal"));
             String photo_kind = cursor.getString(cursor.getColumnIndex("photo_kind"));
-            if(photo_type.equals("food")){
+            if(photo_type.equals("Yes")||photo_type.equals("food")){
                 if(!(null == photo_cal)){
                     if(!all_photo_kind_list.contains(photo_kind)){
                         all_photo_url_list.add(photo_url);
@@ -2106,7 +2106,7 @@ public class LocalEchartsFragment extends BaseFragment {
             String photo_url = cursor.getString(cursor.getColumnIndex("photo_url"));
             String photo_cal = cursor.getString(cursor.getColumnIndex("photo_cal"));
             String photo_kind = cursor.getString(cursor.getColumnIndex("photo_kind"));
-            if(photo_type.equals("food")){
+            if(photo_type.equals("Yes")||photo_type.equals("food")){
                 if(!(null == photo_cal)){
                     if(!all_photo_kind_list.contains(photo_kind)){
                         all_photo_url_list.add(photo_url);

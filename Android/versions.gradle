@@ -7,7 +7,7 @@ import java.util.regex.Pattern
  **/
 ext.deps = [:]
 def versions = [:]
-versions.android_gradle_plugin = '8.1.3'
+versions.android_gradle_plugin = "3.6.1"
 versions.android_maven_gradle_plugin = "2.0"
 versions.gradle_bintray_plugin = "1.8.0"
 versions.booster = "1.4.0"
@@ -197,8 +197,8 @@ ext.deps = deps
 
 def build_versions = [:]
 build_versions.min_sdk = 19
-build_versions.target_sdk = 33
-build_versions.build_tools = "33.0.2"
+build_versions.target_sdk = 28
+build_versions.build_tools = "28.0.3"
 ext.build_versions = build_versions
 
 def app_release = [:]
@@ -242,18 +242,11 @@ static def addRepos(RepositoryHandler handler) {
     handler.jcenter()
     handler.mavenCentral()
     //Add the JitPack repository
-    handler.maven
-            {
-                url "https://jitpack.io"
-                allowInsecureProtocol = true
-            }
-    handler.maven { url "https://dl.bintray.com/umsdk/release"
-        allowInsecureProtocol = true}
+    handler.maven { url "https://jitpack.io" }
+    handler.maven { url "https://dl.bintray.com/umsdk/release" }
     //Add the aliyun repository
-    handler.maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'
-        allowInsecureProtocol = true}
-    handler.maven{ url 'https://oss.sonatype.org/content/repositories/public'
-        allowInsecureProtocol = true}
+    handler.maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+    handler.maven{ url 'https://oss.sonatype.org/content/repositories/public'}
     //Add the Local repository
     handler.maven{ url 'LocalRepository'}
 }
@@ -267,6 +260,6 @@ project.buildscript.configurations.each { configuration ->
         //XAOP插件
         configuration.dependencies.add(getProject().dependencies.create('com.github.xuexiangjys.XAOP:xaop-plugin:1.0.5x'))
         //XRouter插件
-        configuration.dependencies.add(getProject().dependencies.create('com.github.xuexiangjys.XRouter:xrouter-plugin:1.1.0'))
+        configuration.dependencies.add(getProject().dependencies.create('com.github.xuexiangjys.XRouter:xrouter-plugin:1.0.1'))
     }
 }

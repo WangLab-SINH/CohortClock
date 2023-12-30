@@ -34,8 +34,10 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -86,6 +88,16 @@ public class BodyIndexFragment extends BaseFragment{
     String start_time = "null";
     String end_time = "null";
 
+
+    String index_unit = "";
+    String min_num = "";
+    String max_num = "";
+    String scale = "0";
+    String average = "0";
+    String index_name = "";
+    String index_console = "";
+    String is_add = "FALSE";
+
     @Override
     public void onActivityCreated(Bundle savedInstanceState)
     {
@@ -93,103 +105,175 @@ public class BodyIndexFragment extends BaseFragment{
         Bundle arguments = getArguments();
         String name = arguments.getString("null");
         current_index = name;
-        if(name.equals("weight")){
-            index_name_text.setText("Weight");
-            mTabControlView.setVisibility(View.GONE);
-            mTabControlView11.setVisibility(View.GONE);
-            mTabControlView1.setVisibility(View.GONE);
-            mTabControlView12.setVisibility(View.GONE);
-            mTabControlView2.setVisibility(View.GONE);
-            rulerView1.setVisibility(View.GONE);
-            etDisease.setVisibility(View.GONE);
-            btn_time_period2.setVisibility(View.GONE);
-            btn_time_period_3.setVisibility(View.GONE);
-        }else if(name.equals("height")){
-            index_name_text.setText("Height");
-            mTabControlView.setVisibility(View.GONE);
-            mTabControlView11.setVisibility(View.GONE);
-            mTabControlView1.setVisibility(View.GONE);
-            mTabControlView12.setVisibility(View.GONE);
-            mTabControlView2.setVisibility(View.GONE);
-            rulerView.setVisibility(View.GONE);
-            etDisease.setVisibility(View.GONE);
-            btn_time_period2.setVisibility(View.GONE);
-            btn_time_period_3.setVisibility(View.GONE);
-        }else if(name.equals("sleep")){
-            index_name_text.setText("Sleep time");
-            mTabControlView.setVisibility(View.GONE);
-            mTabControlView11.setVisibility(View.GONE);
-            mTabControlView1.setVisibility(View.GONE);
-            mTabControlView12.setVisibility(View.GONE);
-            mTabControlView2.setVisibility(View.GONE);
-            rulerView.setVisibility(View.GONE);
-            rulerView1.setVisibility(View.GONE);
-            etDisease.setVisibility(View.GONE);
-        }else if(name.equals("blood")){
-            index_name_text.setText("Blood Pressure");
-            mTabControlView.setVisibility(View.GONE);
-            mTabControlView11.setVisibility(View.GONE);
-            mTabControlView1.setVisibility(View.GONE);
-            mTabControlView12.setVisibility(View.GONE);
-            mTabControlView2.setVisibility(View.GONE);
-            etDisease.setVisibility(View.GONE);
-            btn_time_period2.setVisibility(View.GONE);
-            btn_time_period_3.setVisibility(View.GONE);
-        }else if(name.equals("heart")){
-            index_name_text.setText("Heart Rate");
-            mTabControlView.setVisibility(View.GONE);
-            mTabControlView11.setVisibility(View.GONE);
-            mTabControlView1.setVisibility(View.GONE);
-            mTabControlView12.setVisibility(View.GONE);
-            mTabControlView2.setVisibility(View.GONE);
-            etDisease.setVisibility(View.GONE);
-            rulerView1.setVisibility(View.GONE);
-            btn_time_period2.setVisibility(View.GONE);
-            btn_time_period_3.setVisibility(View.GONE);
-        }else if(name.equals("waist")){
-            index_name_text.setText("Waist Circumference");
-            mTabControlView.setVisibility(View.GONE);
-            mTabControlView11.setVisibility(View.GONE);
-            mTabControlView1.setVisibility(View.GONE);
-            mTabControlView12.setVisibility(View.GONE);
-            mTabControlView2.setVisibility(View.GONE);
-            etDisease.setVisibility(View.GONE);
-            rulerView1.setVisibility(View.GONE);
-            btn_time_period2.setVisibility(View.GONE);
-            btn_time_period_3.setVisibility(View.GONE);
-        }else if(name.equals("exercise")){
-            index_name_text.setText("Exercise Duration");
-            mTabControlView.setVisibility(View.GONE);
-            mTabControlView11.setVisibility(View.GONE);
-            mTabControlView1.setVisibility(View.GONE);
-            mTabControlView12.setVisibility(View.GONE);
-            mTabControlView2.setVisibility(View.GONE);
-            rulerView.setVisibility(View.GONE);
-            rulerView1.setVisibility(View.GONE);
-            etDisease.setVisibility(View.GONE);
-        }else if(name.equals("temperature")){
-            index_name_text.setText("Body Temperature");
-            mTabControlView.setVisibility(View.GONE);
-            mTabControlView11.setVisibility(View.GONE);
-            mTabControlView1.setVisibility(View.GONE);
-            mTabControlView12.setVisibility(View.GONE);
-            mTabControlView2.setVisibility(View.GONE);
-            etDisease.setVisibility(View.GONE);
-            rulerView1.setVisibility(View.GONE);
-            btn_time_period2.setVisibility(View.GONE);
-            btn_time_period_3.setVisibility(View.GONE);
-        }else if(name.equals("medicine")){
-            index_name_text.setText("Medicine");
-            mTabControlView.setVisibility(View.GONE);
-            mTabControlView11.setVisibility(View.GONE);
-            mTabControlView1.setVisibility(View.GONE);
-            mTabControlView12.setVisibility(View.GONE);
-            mTabControlView2.setVisibility(View.GONE);
-            rulerView.setVisibility(View.GONE);
-            rulerView1.setVisibility(View.GONE);
-            btn_time_period2.setVisibility(View.GONE);
-            btn_time_period_3.setVisibility(View.GONE);
+
+        List<String> index_raw = new ArrayList<>();
+        index_raw.add("weight");
+        index_raw.add("height");
+        index_raw.add("blood");
+        index_raw.add("heart");
+        index_raw.add("waist");
+        index_raw.add("exercise");
+        index_raw.add("temperature");
+        index_raw.add("medicine");
+
+
+        if(index_raw.contains(name)){
+            if(name.equals("weight")){
+                index_name_text.setText("Weight");
+                mTabControlView.setVisibility(View.GONE);
+                mTabControlView11.setVisibility(View.GONE);
+                mTabControlView1.setVisibility(View.GONE);
+                mTabControlView12.setVisibility(View.GONE);
+                mTabControlView2.setVisibility(View.GONE);
+                rulerView1.setVisibility(View.GONE);
+                etDisease.setVisibility(View.GONE);
+                btn_time_period2.setVisibility(View.GONE);
+                btn_time_period_3.setVisibility(View.GONE);
+            }else if(name.equals("height")){
+                index_name_text.setText("Height");
+                mTabControlView.setVisibility(View.GONE);
+                mTabControlView11.setVisibility(View.GONE);
+                mTabControlView1.setVisibility(View.GONE);
+                mTabControlView12.setVisibility(View.GONE);
+                mTabControlView2.setVisibility(View.GONE);
+                rulerView.setVisibility(View.GONE);
+                etDisease.setVisibility(View.GONE);
+                btn_time_period2.setVisibility(View.GONE);
+                btn_time_period_3.setVisibility(View.GONE);
+            }else if(name.equals("sleep")){
+                index_name_text.setText("Sleep time");
+                mTabControlView.setVisibility(View.GONE);
+                mTabControlView11.setVisibility(View.GONE);
+                mTabControlView1.setVisibility(View.GONE);
+                mTabControlView12.setVisibility(View.GONE);
+                mTabControlView2.setVisibility(View.GONE);
+                rulerView.setVisibility(View.GONE);
+                rulerView1.setVisibility(View.GONE);
+                etDisease.setVisibility(View.GONE);
+            }else if(name.equals("blood")){
+                index_name_text.setText("Blood Pressure");
+                mTabControlView.setVisibility(View.GONE);
+                mTabControlView11.setVisibility(View.GONE);
+                mTabControlView1.setVisibility(View.GONE);
+                mTabControlView12.setVisibility(View.GONE);
+                mTabControlView2.setVisibility(View.GONE);
+                etDisease.setVisibility(View.GONE);
+                btn_time_period2.setVisibility(View.GONE);
+                btn_time_period_3.setVisibility(View.GONE);
+            }else if(name.equals("heart")){
+                index_name_text.setText("Heart Rate");
+                mTabControlView.setVisibility(View.GONE);
+                mTabControlView11.setVisibility(View.GONE);
+                mTabControlView1.setVisibility(View.GONE);
+                mTabControlView12.setVisibility(View.GONE);
+                mTabControlView2.setVisibility(View.GONE);
+                etDisease.setVisibility(View.GONE);
+                rulerView1.setVisibility(View.GONE);
+                btn_time_period2.setVisibility(View.GONE);
+                btn_time_period_3.setVisibility(View.GONE);
+            }else if(name.equals("waist")){
+                index_name_text.setText("Waist Circumference");
+                mTabControlView.setVisibility(View.GONE);
+                mTabControlView11.setVisibility(View.GONE);
+                mTabControlView1.setVisibility(View.GONE);
+                mTabControlView12.setVisibility(View.GONE);
+                mTabControlView2.setVisibility(View.GONE);
+                etDisease.setVisibility(View.GONE);
+                rulerView1.setVisibility(View.GONE);
+                btn_time_period2.setVisibility(View.GONE);
+                btn_time_period_3.setVisibility(View.GONE);
+            }else if(name.equals("exercise")){
+                index_name_text.setText("Exercise Duration");
+                mTabControlView.setVisibility(View.GONE);
+                mTabControlView11.setVisibility(View.GONE);
+                mTabControlView1.setVisibility(View.GONE);
+                mTabControlView12.setVisibility(View.GONE);
+                mTabControlView2.setVisibility(View.GONE);
+                rulerView.setVisibility(View.GONE);
+                rulerView1.setVisibility(View.GONE);
+                etDisease.setVisibility(View.GONE);
+            }else if(name.equals("temperature")){
+                index_name_text.setText("Body Temperature");
+                mTabControlView.setVisibility(View.GONE);
+                mTabControlView11.setVisibility(View.GONE);
+                mTabControlView1.setVisibility(View.GONE);
+                mTabControlView12.setVisibility(View.GONE);
+                mTabControlView2.setVisibility(View.GONE);
+                etDisease.setVisibility(View.GONE);
+                rulerView1.setVisibility(View.GONE);
+                btn_time_period2.setVisibility(View.GONE);
+                btn_time_period_3.setVisibility(View.GONE);
+            }else if(name.equals("medicine")){
+                index_name_text.setText("Medicine");
+                mTabControlView.setVisibility(View.GONE);
+                mTabControlView11.setVisibility(View.GONE);
+                mTabControlView1.setVisibility(View.GONE);
+                mTabControlView12.setVisibility(View.GONE);
+                mTabControlView2.setVisibility(View.GONE);
+                rulerView.setVisibility(View.GONE);
+                rulerView1.setVisibility(View.GONE);
+                btn_time_period2.setVisibility(View.GONE);
+                btn_time_period_3.setVisibility(View.GONE);
+            }
+        }else{
+
+
+            String temp_res1 = MMKVUtils.getString("index_table_string", "");
+            String[] index_info = temp_res1.split("<");
+            for(int i = 0; i < index_info.length;i++ ){
+                String temp_index_name = index_info[i].split(";")[2];
+                if(!index_raw.contains(current_index)){
+                    if(temp_index_name.equals(current_index)){
+                        is_add = "TRUE";
+                        index_console = index_info[i].split(";")[1];
+                        index_unit = index_info[i].split(";")[3];
+                        min_num = index_info[i].split(";")[4];
+                        max_num = index_info[i].split(";")[5];
+                        scale = index_info[i].split(";")[6];
+                        average = index_info[i].split(";")[7];
+                        index_name = index_info[i].split(";")[8];
+
+                    }
+
+                }
+            }
+            index_name_text.setText(current_index);
+
+            if(index_console.equals("Ruler")){
+                mTabControlView.setVisibility(View.GONE);
+                mTabControlView11.setVisibility(View.GONE);
+                mTabControlView1.setVisibility(View.GONE);
+                mTabControlView12.setVisibility(View.GONE);
+                mTabControlView2.setVisibility(View.GONE);
+                etDisease.setVisibility(View.GONE);
+                //rulerView.setVisibility(View.GONE);
+                rulerView1.setVisibility(View.GONE);
+                btn_time_period2.setVisibility(View.GONE);
+                btn_time_period_3.setVisibility(View.GONE);
+            }else{
+                mTabControlView.setVisibility(View.GONE);
+                mTabControlView11.setVisibility(View.GONE);
+                mTabControlView1.setVisibility(View.GONE);
+                mTabControlView12.setVisibility(View.GONE);
+                mTabControlView2.setVisibility(View.GONE);
+                //etDisease.setVisibility(View.GONE);
+                rulerView.setVisibility(View.GONE);
+                rulerView1.setVisibility(View.GONE);
+                btn_time_period2.setVisibility(View.GONE);
+                btn_time_period_3.setVisibility(View.GONE);
+            }
+
+
+
         }
+
+
+
+
+
+
+
+
 
 
     }
@@ -220,107 +304,153 @@ public class BodyIndexFragment extends BaseFragment{
     private void initTabControlView() {
         Bundle arguments = getArguments();
         current_index = arguments.getString("null");
-        if(current_index.equals("blood")){
-            try {
 
-                float mmkv_weight = Float.valueOf(MMKVUtils.getString("dia_pre", "80"));
-                float mmkv_height = Float.valueOf(MMKVUtils.getString("sys_pre", "100"));
-                rulerView.setFirstScale(mmkv_weight);
-                rulerView.setMaxScale(200);
-                rulerView.setMinScale(0);
-                rulerView.setUnit("mmHg");
-                rulerView1.setFirstScale(mmkv_height);
-                rulerView1.setMaxScale(200);
-                rulerView1.setMinScale(0);
-                rulerView1.setUnit("mmHg");
+        List<String> index_raw = new ArrayList<>();
+        index_raw.add("weight");
+        index_raw.add("height");
+        index_raw.add("blood");
+        index_raw.add("heart");
+        index_raw.add("waist");
+        index_raw.add("exercise");
+        index_raw.add("temperature");
+        index_raw.add("medicine");
+        if(!index_raw.contains(current_index)){
+            String temp_res1 = MMKVUtils.getString("index_table_string", "");
+            String[] index_info = temp_res1.split("<");
+            for(int i = 0; i < index_info.length;i++ ){
+                String temp_index_name = index_info[i].split(";")[2];
+                if(!index_raw.contains(current_index)){
+                    if(temp_index_name.equals(current_index)){
+                        is_add = "TRUE";
+                        index_console = index_info[i].split(";")[1];
+                        index_unit = index_info[i].split(";")[3];
+                        min_num = index_info[i].split(";")[4];
+                        max_num = index_info[i].split(";")[5];
+                        scale = index_info[i].split(";")[6];
+                        average = index_info[i].split(";")[7];
+                        index_name = index_info[i].split(";")[8];
 
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }else if(current_index.equals("heart")){
-            try {
+                    }
 
-                float mmkv_weight = Float.valueOf(MMKVUtils.getString("rate", "60"));
-                rulerView.setFirstScale(mmkv_weight);
-                rulerView.setMaxScale(200);
-                rulerView.setMinScale(0);
-                rulerView.setUnit("BPM");
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }else if(current_index.equals("waist")){
-            try {
-
-                float mmkv_weight = Float.valueOf(MMKVUtils.getString("waist", "80"));
-                rulerView.setFirstScale(mmkv_weight);
-                rulerView.setMaxScale(200);
-                rulerView.setMinScale(0);
-                rulerView.setUnit("cm");
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }else if(current_index.equals("exercise")){
-            btn_time_period2.setText("Choose exercise start imte");
-            btn_time_period_3.setText("Choose exercise end imte");
-
-        }else if(current_index.equals("temperature")){
-            try {
-
-                float mmkv_weight = Float.valueOf(MMKVUtils.getString("degree", "36.5"));
-                rulerView.setFirstScale(mmkv_weight);
-                rulerView.setMaxScale(42);
-                rulerView.setMinScale(30);
-                rulerView.setUnit("degree");
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }else if(current_index.equals("height")){
-            try {
-
-                float mmkv_weight = Float.valueOf(MMKVUtils.getString("height", "167.1"));
-                rulerView.setFirstScale(mmkv_weight);
-                rulerView.setMaxScale(0);
-                rulerView.setMinScale(220);
-                rulerView.setUnit("cm");
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }else{
-            try {
-                mTabControlView.setItems(ResUtils.getStringArray(R.array.course_param_option),ResUtils.getStringArray(R.array.course_param_value));
-                String mmkv_sex = MMKVUtils.getString("sex", "male");
-
-                if(mmkv_sex.equals("male")){
-                    mTabControlView.setDefaultSelection(0);
-                }else{
-                    mTabControlView.setDefaultSelection(1);
                 }
+            }
+        }
+
+        if(is_add.equals("FALSE")){
+            if(current_index.equals("blood")){
+                try {
+
+                    float mmkv_weight = Float.valueOf(MMKVUtils.getString("dia_pre", "80"));
+                    float mmkv_height = Float.valueOf(MMKVUtils.getString("sys_pre", "100"));
+                    rulerView.setFirstScale(mmkv_weight);
+                    rulerView.setMaxScale(200);
+                    rulerView.setMinScale(0);
+                    rulerView.setUnit("mmHg");
+                    rulerView1.setFirstScale(mmkv_height);
+                    rulerView1.setMaxScale(200);
+                    rulerView1.setMinScale(0);
+                    rulerView1.setUnit("mmHg");
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }else if(current_index.equals("heart")){
+                try {
+
+                    float mmkv_weight = Float.valueOf(MMKVUtils.getString("rate", "60"));
+                    rulerView.setFirstScale(mmkv_weight);
+                    rulerView.setMaxScale(200);
+                    rulerView.setMinScale(0);
+                    rulerView.setUnit("BPM");
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }else if(current_index.equals("waist")){
+                try {
+
+                    float mmkv_weight = Float.valueOf(MMKVUtils.getString("waist", "80"));
+                    rulerView.setFirstScale(mmkv_weight);
+                    rulerView.setMaxScale(200);
+                    rulerView.setMinScale(0);
+                    rulerView.setUnit("cm");
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }else if(current_index.equals("exercise")){
+                btn_time_period2.setText("Choose exercise start imte");
+                btn_time_period_3.setText("Choose exercise end imte");
+
+            }else if(current_index.equals("temperature")){
+                try {
+
+                    float mmkv_weight = Float.valueOf(MMKVUtils.getString("degree", "36.5"));
+                    rulerView.setFirstScale(mmkv_weight);
+                    rulerView.setMaxScale(42);
+                    rulerView.setMinScale(30);
+                    rulerView.setUnit("degree");
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }else if(current_index.equals("height")){
+                try {
+
+                    float mmkv_weight = Float.valueOf(MMKVUtils.getString("height", "167.1"));
+                    rulerView.setFirstScale(mmkv_weight);
+                    rulerView.setMaxScale(0);
+                    rulerView.setMinScale(220);
+                    rulerView.setUnit("cm");
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }else{
+                try {
+                    mTabControlView.setItems(ResUtils.getStringArray(R.array.course_param_option),ResUtils.getStringArray(R.array.course_param_value));
+                    String mmkv_sex = MMKVUtils.getString("sex", "male");
+
+                    if(mmkv_sex.equals("male")){
+                        mTabControlView.setDefaultSelection(0);
+                    }else{
+                        mTabControlView.setDefaultSelection(1);
+                    }
 
 
 
 
-                float mmkv_weight = Float.valueOf(MMKVUtils.getString("latest_weight", "66.2"));
+                    float mmkv_weight = Float.valueOf(MMKVUtils.getString("latest_weight", "66.2"));
 //                float mmkv_height = Float.valueOf(MMKVUtils.getString("height", "167.1"));
-                rulerView.setFirstScale(mmkv_weight);
+                    rulerView.setFirstScale(mmkv_weight);
 //                rulerView1.setFirstScale(mmkv_height);
 
 //            rulerView.setMaxScale(100);
-                mTabControlView1.setItems(ResUtils.getStringArray(R.array.course_param_option1),ResUtils.getStringArray(R.array.course_param_value1));
-                mTabControlView1.setDefaultSelection(1);
-                mTabControlView11.setItems(ResUtils.getStringArray(R.array.course_param_option3),ResUtils.getStringArray(R.array.course_param_value3));
-                mTabControlView11.setDefaultSelection(1);
-                mTabControlView12.setItems(ResUtils.getStringArray(R.array.course_param_option4),ResUtils.getStringArray(R.array.course_param_value4));
-                mTabControlView12.setDefaultSelection(1);
-                mTabControlView2.setItems(ResUtils.getStringArray(R.array.course_param_option2),ResUtils.getStringArray(R.array.course_param_value2));
-                mTabControlView2.setDefaultSelection(0);
-            } catch (Exception e) {
-                e.printStackTrace();
+                    mTabControlView1.setItems(ResUtils.getStringArray(R.array.course_param_option1),ResUtils.getStringArray(R.array.course_param_value1));
+                    mTabControlView1.setDefaultSelection(1);
+                    mTabControlView11.setItems(ResUtils.getStringArray(R.array.course_param_option3),ResUtils.getStringArray(R.array.course_param_value3));
+                    mTabControlView11.setDefaultSelection(1);
+                    mTabControlView12.setItems(ResUtils.getStringArray(R.array.course_param_option4),ResUtils.getStringArray(R.array.course_param_value4));
+                    mTabControlView12.setDefaultSelection(1);
+                    mTabControlView2.setItems(ResUtils.getStringArray(R.array.course_param_option2),ResUtils.getStringArray(R.array.course_param_value2));
+                    mTabControlView2.setDefaultSelection(0);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
+        }else{
+            if(index_console.equals("Ruler")){
+                float mmkv_weight = Float.valueOf(MMKVUtils.getString(current_index, "0"));
+                rulerView.setFirstScale(mmkv_weight);
+                rulerView.setMaxScale((int) Math.ceil(Float.valueOf(max_num)));
+                rulerView.setMinScale((int) Math.floor(Float.valueOf(min_num)));
+                rulerView.setUnit(index_unit);
+            }else{
+
+            }
+
         }
+
 
 
         mTabControlView.setOnTabSelectionChangedListener(new TabControlView.OnTabSelectionChangedListener() {
@@ -770,7 +900,7 @@ public class BodyIndexFragment extends BaseFragment{
                     values.put("user_name", androidid);
                     values.put("user_time", time_string);
                     values.put("index_value", weight);
-                    values.put("index_name","degree");
+                    values.put("index_name","Temperature");
                     db1.insert("body_index", null, values);
 
 
@@ -783,7 +913,7 @@ public class BodyIndexFragment extends BaseFragment{
                             //creating new thread to handle Http Operations
                             Looper.prepare();
                             String user_name = MMKVUtils.getString("IS_USER_ACCOUNT", "Cohort Clock");
-                            result = getRegistData(user_name, "1", androidid,  time_string,  time_string,  weight, "degree");
+                            result = getRegistData(user_name, "1", androidid,  time_string,  time_string,  weight, "Temperature");
 
                             if(result.equals("no"))
                             {
@@ -954,6 +1084,88 @@ public class BodyIndexFragment extends BaseFragment{
 
                 }
                 else{
+                    if(is_add.equals("TRUE")){
+                        if(index_console.equals("Ruler")){
+                            weight = String.valueOf(rulerView.getCurrentValue());
+                            MMKVUtils.put(current_index, weight);
+
+                            final String androidid = Settings.System.getString(getContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+                            Calendar calendar = Calendar.getInstance();
+
+                            calendar.setTime(DateUtils.getNowDate());
+                            String current_time = String.valueOf(calendar.get(Calendar.HOUR_OF_DAY)) + '_' + String.valueOf(calendar.get(Calendar.MINUTE))+ '_' + String.valueOf(calendar.get(Calendar.SECOND));
+
+                            int year = calendar.get(Calendar.YEAR);
+                            int month = calendar.get(Calendar.MONTH)+1;
+                            int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+                            String time_string;
+                            String [] temp = current_time.split("_");
+                            if(Integer.valueOf(temp[0]) < 10){
+                                temp[0] = "0" + temp[0];
+                            }
+                            if(Integer.valueOf(temp[1]) < 10){
+                                temp[1] = "0" + temp[1];
+                            }
+                            time_string = year + "." + month + "." + day + "-" + temp[0] + ":" + temp[1] + ":" + "00";
+
+                            DatabaseHelper databaseHelper1 = new DatabaseHelper(getContext(),"body_index",null,1);
+                            SQLiteDatabase db1 = databaseHelper1.getWritableDatabase();
+                            ContentValues values = new ContentValues();
+                            values.put("user_name", androidid);
+                            values.put("user_time", time_string);
+                            values.put("index_value", weight);
+                            values.put("index_name",current_index);
+                            db1.insert("body_index", null, values);
+
+
+                            db1.close();
+
+                            new Thread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    String result = "none";
+                                    //creating new thread to handle Http Operations
+                                    Looper.prepare();
+                                    String user_name = MMKVUtils.getString("IS_USER_ACCOUNT", "Cohort Clock");
+                                    result = getRegistData(user_name, "1", androidid,  time_string,  time_string,  weight, current_index);
+
+                                    if(result.equals("no"))
+                                    {
+                                        Toast.makeText(getActivity(), "", Toast.LENGTH_SHORT).show();
+                                    }
+                                    else if(result.equals("yes"))
+                                    {
+                                        Toast.makeText(getActivity(), "", Toast.LENGTH_SHORT).show();
+
+                                    }
+                                    else if(result.equals("none"))
+                                    {
+                                        Toast.makeText(getActivity(), "", Toast.LENGTH_SHORT).show();
+                                    }
+                                    Toast.makeText(getActivity(), "", Toast.LENGTH_SHORT).show();
+                                    popToBack();
+                                    Looper.loop();
+
+                                    //Toast.makeText(RegisterActivity.this, "成功111", Toast.LENGTH_SHORT).show();
+
+//	                    	Map<String, String> params = new HashMap<String, String>();
+//	                        params.put("user_name", "asd");
+//	                        params.put("user_name", "123");
+//	                        String result = null;
+//							try {
+//								result = sendPostMessage(params,"utf-8");
+//							} catch (MalformedURLException e) {
+//								// TODO Auto-generated catch block
+//								e.printStackTrace();
+//							}
+//	                        System.out.println("result->"+result);
+                                }
+                            }).start();
+                        }else{
+
+                        }
+                    }
 //                    weight = String.valueOf(rulerView.getCurrentValue());
 //                    height = String.valueOf(rulerView1.getCurrentValue());
 //                    MMKVUtils.put("latest_weight", weight);

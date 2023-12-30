@@ -18,11 +18,9 @@
 package com.xuexiang.templateproject.activity;
 
 import android.content.ContentValues;
-import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -48,7 +46,6 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.luck.picture.lib.entity.LocalMedia;
-import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.xuexiang.templateproject.R;
 import com.xuexiang.templateproject.core.BaseActivity;
 import com.xuexiang.templateproject.core.BaseFragment;
@@ -62,8 +59,6 @@ import com.xuexiang.templateproject.fragment.news.QuestionFragment;
 import com.xuexiang.templateproject.fragment.profile.ProfileFragment;
 import com.xuexiang.templateproject.fragment.trending.ReloadedFragment;
 import com.xuexiang.templateproject.fragment.trending.TrendingFragment;
-import com.xuexiang.templateproject.utils.DrawLongPictureUtil;
-import com.xuexiang.templateproject.utils.Info;
 import com.xuexiang.templateproject.utils.MMKVUtils;
 import com.xuexiang.templateproject.utils.Utils;
 import com.xuexiang.templateproject.utils.XToastUtils;
@@ -71,9 +66,6 @@ import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xui.adapter.FragmentAdapter;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
-import com.xuexiang.xui.widget.dialog.DialogLoader;
-import com.xuexiang.xui.widget.dialog.bottomsheet.BottomSheet;
-import com.xuexiang.xui.widget.dialog.bottomsheet.BottomSheetItemView;
 import com.xuexiang.xui.widget.imageview.RadiusImageView;
 import com.xuexiang.xui.widget.popupwindow.popup.XUISimplePopup;
 import com.xuexiang.xutil.XUtil;
@@ -89,7 +81,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.text.DateFormat;
-import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -335,6 +326,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             public void run() {
                 getSynData();
                 getSynDataTime();
+                String temp_res = getSynDataIndexTable();
+//                String temp_res1 = MMKVUtils.getString("index_table_string", "");
 
                 handler.obtainMessage(MSG_SUCCESS).sendToTarget();
             }
@@ -599,6 +592,52 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     }
 
 
+
+    public String getSynDataIndexTable()
+    {
+        String string = "none";
+        String temp_res = "";
+        int serverResponseCode = 0;
+        //StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().detectDiskReads().detectDiskWrites().detectNetwork().penaltyLog().build());
+        HttpURLConnection connection;
+        DataOutputStream dataOutputStream;
+        String lineEnd = "\r\n";
+        String twoHyphens = "--";
+        String boundary = "*****";
+        OkHttpClient okHttpClient = new OkHttpClient();
+        String androidid = Settings.System.getString(getContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+        String url1 = "";
+
+        url1 ="http://39.100.73.118/deeplearning_photo/syn_database_index_table.php"+"";
+
+
+//        String user_name = MMKVUtils.getString("IS_USER_ACCOUNT", "Cohort Clock");
+//        if(user_name == "Cohort Clock"){
+//            url1 ="http://39.100.73.118/deeplearning_photo/syn_database_new_time.php?androidid="+androidid+"";
+//        }else{
+//            url1 ="http://39.100.73.118/deeplearning_photo/syn_database_new_time.php?androidid="+androidid+"";
+//        }
+
+        Request request = new Request.Builder()
+                .url(url1)
+                .build();
+
+        try{
+            Response response = okHttpClient.newCall(request).execute();
+            temp_res = response.body().string();
+            MMKVUtils.put("index_table_string", temp_res);
+
+
+            //handler.sendEmptyMessage(1);
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+            //handler.sendEmptyMessage(2);
+        }
+        return (temp_res);
+    }
+
+
     public String getSynDataTime()
     {
         String string = "none";
@@ -826,7 +865,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 //                this.onPageSelected(1);
                // mMenuPopup.showDown(item.getActionView());
 
-               showSimpleBottomSheetGrid(this);
+//               showSimpleBottomSheetGrid(this);
 
 //                List<String>time_list_array = new ArrayList<>();
 //                time_list_array.add("2020.09.05-00:15:00");
@@ -1085,446 +1124,448 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
 
 
-
-        BottomSheet.BottomGridSheetBuilder builder = new BottomSheet.BottomGridSheetBuilder(this);
-        builder
-                .addItem(R.drawable.icon_more_operation_share_friend, "Send to wechat", TAG_SHARE_WECHAT_FRIEND, BottomSheet.BottomGridSheetBuilder.FIRST_LINE)
-                .addItem(R.drawable.icon_more_operation_share_moment, "Send to discover", TAG_SHARE_WECHAT_MOMENT, BottomSheet.BottomGridSheetBuilder.FIRST_LINE)
-                .addItem(R.drawable.icon_more_operation_share_weibo, "Send to weibo", TAG_SHARE_WEIBO, BottomSheet.BottomGridSheetBuilder.FIRST_LINE)
-                .addItem(R.drawable.icon_more_operation_share_chat, "Send to chat", TAG_SHARE_CHAT, BottomSheet.BottomGridSheetBuilder.FIRST_LINE)
-                //.addItem(R.drawable.icon_more_operation_save, "保存到本地", TAG_SHARE_LOCAL, BottomSheet.BottomGridSheetBuilder.SECOND_LINE)
-                .setOnSheetItemClickListener(new BottomSheet.BottomGridSheetBuilder.OnSheetItemClickListener() {
-                    @Override
-                    public void onClick(BottomSheet dialog, BottomSheetItemView itemView) {
-                        dialog.dismiss();
-
-
-//                        int tag = (int) itemView.getTag();
-//                        XToastUtils.toast("tag:" + tag + ", content:" + itemView.toString());
-                        if(itemView.toString().equals("Send to wechat")){
-
-                            DialogLoader.getInstance().showConfirmDialog(
-                                    MainActivity.this,
-                                    "Do you mind to share",
-                                    "是",
-                                    new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-
-
-                                            Utils.showCaptureBitmap((WebView) findViewById(R.id.myView));
-
-
-
-                                            View dView = (WebView) findViewById(R.id.myView);
-                                            dView.clearFocus();
-                                            dView.setDrawingCacheEnabled(true);
-                                            dView.buildDrawingCache();
-                                            Bitmap bmp = dView.getDrawingCache();
-
-                                            Calendar calendar = Calendar.getInstance();
-                                            int hour = calendar.get(Calendar.HOUR_OF_DAY);
-                                            String hour_s;
-                                            if(hour < 10){
-                                                hour_s = "0" + String.valueOf(hour);
-                                            }
-                                            else{
-                                                hour_s = String.valueOf(hour);
-                                            }
-                                            //����
-                                            int minute = calendar.get(Calendar.MINUTE);
-                                            String minute_s;
-                                            if(minute < 10){
-                                                minute_s = "0" + String.valueOf(minute);
-                                            }
-                                            else{
-                                                minute_s = String.valueOf(minute);
-                                            }
-                                            //��
-                                            int second = calendar.get(Calendar.SECOND);
-                                            String second_s;
-                                            if(second < 10){
-                                                second_s = "0" + String.valueOf(second);
-                                            }
-                                            else{
-                                                second_s = String.valueOf(second);
-                                            }
-                                            String time_string;
-                                            time_string = hour_s + "_" + minute_s + "_" + second_s;
-                                            String photo_name = "share_photo_" + time_string + ".jpg";
-
-                                            saveBitmap(bmp,photo_name);
-
-
-//                            View dView = getWindow().getDecorView();
-//                            dView.setDrawingCacheEnabled(true);
-//                            dView.buildDrawingCache();
-//                            Bitmap bmp = dView.getDrawingCache();
-
-//                            if (bmp != null) {
-//                                try {
-//                                    // 获取状态栏高度
-//                                    Rect rect = new Rect();
-//                                    dView.getWindowVisibleDisplayFrame(rect);
-//                                    int statusBarHeights = rect.top;
-//                                    Display display = getWindowManager().getDefaultDisplay();
-//                                    int widths = display.getWidth();
-//                                    int heights = display.getHeight();
-//                                    // 去掉状态栏
-//                                    saveBitmap = Bitmap.createBitmap(dView.getDrawingCache(), 0, statusBarHeights,
-//                                            widths, heights - statusBarHeights);
+//{
+//
+//
+//        BottomSheet.BottomGridSheetBuilder builder = new BottomSheet.BottomGridSheetBuilder(this);
+//        builder
+//                .addItem(R.drawable.icon_more_operation_share_friend, "Send to wechat", TAG_SHARE_WECHAT_FRIEND, BottomSheet.BottomGridSheetBuilder.FIRST_LINE)
+//                .addItem(R.drawable.icon_more_operation_share_moment, "Send to discover", TAG_SHARE_WECHAT_MOMENT, BottomSheet.BottomGridSheetBuilder.FIRST_LINE)
+//                .addItem(R.drawable.icon_more_operation_share_weibo, "Send to weibo", TAG_SHARE_WEIBO, BottomSheet.BottomGridSheetBuilder.FIRST_LINE)
+//                .addItem(R.drawable.icon_more_operation_share_chat, "Send to chat", TAG_SHARE_CHAT, BottomSheet.BottomGridSheetBuilder.FIRST_LINE)
+//                //.addItem(R.drawable.icon_more_operation_save, "保存到本地", TAG_SHARE_LOCAL, BottomSheet.BottomGridSheetBuilder.SECOND_LINE)
+//                .setOnSheetItemClickListener(new BottomSheet.BottomGridSheetBuilder.OnSheetItemClickListener() {
+//                    @Override
+//                    public void onClick(BottomSheet dialog, BottomSheetItemView itemView) {
+//                        dialog.dismiss();
+//
+//
+////                        int tag = (int) itemView.getTag();
+////                        XToastUtils.toast("tag:" + tag + ", content:" + itemView.toString());
+//                        if(itemView.toString().equals("Send to wechat")){
+//
+//                            DialogLoader.getInstance().showConfirmDialog(
+//                                    MainActivity.this,
+//                                    "Do you mind to share",
+//                                    "是",
+//                                    new DialogInterface.OnClickListener() {
+//                                        @Override
+//                                        public void onClick(DialogInterface dialog, int which) {
+//
+//
+//                                            Utils.showCaptureBitmap((WebView) findViewById(R.id.myView));
 //
 //
 //
+//                                            View dView = (WebView) findViewById(R.id.myView);
+//                                            dView.clearFocus();
+//                                            dView.setDrawingCacheEnabled(true);
+//                                            dView.buildDrawingCache();
+//                                            Bitmap bmp = dView.getDrawingCache();
 //
-//                                } catch (Exception e) {
-//                                    e.printStackTrace();
-//                                }
-//                            } else {
-////            initHandler.sendMessage(Message.obtain());
-//                            }
-
-
-                                            try {
-                                                Thread.sleep(500);
-                                            } catch (InterruptedException e) {
-                                                e.printStackTrace();
-                                            }
-
-                                            mCurrentSelectedPath.add(Environment.getExternalStorageDirectory() + "/share_photo/" + photo_name);
-
-                                            //mCurrentSelectedPath.add(Environment.getExternalStorageDirectory() + "/zip/zipped.jpg");
-                                            progressBar.setVisibility(View.VISIBLE);
-
-                                            DrawLongPictureUtil drawLongPictureUtil;
-
-
-                                            drawLongPictureUtil = new DrawLongPictureUtil(MainActivity.this);
-                                            drawLongPictureUtil.setListener(new DrawLongPictureUtil.Listener() {
-                                                @Override public void onSuccess(String path) {
-                                                    runOnUiThread(new Runnable() {
-                                                        @Override public void run() {
-                                                            progressBar.setVisibility(View.GONE);
-//                                            Toast.makeText(MainActivity.this.getApplicationContext(), "长图生成完成，点击下方按钮查看！",
-//                                                    Toast.LENGTH_LONG).show();
-                                                        }
-                                                    });
-                                                    resultPath = path;
-                                                    Bitmap bitmap = BitmapFactory.decodeFile(resultPath);
-                                                    ShareUtils.sharePhoto(mainActivity, bitmap, Defaultcontent.title
-                                                            , Defaultcontent.text, Defaultcontent.imageurl, R.mipmap.a6, SHARE_MEDIA.WEIXIN
-                                                    );
-                                                    mCurrentSelectedPath.clear();
-
-//                                    ShareUtils.sharePhoto(mainActivity, bitmap, Defaultcontent.title
-//                                            , Defaultcontent.text, Defaultcontent.imageurl, R.mipmap.a6, SHARE_MEDIA.WEIXIN
-//                                    );
-                                                }
-
-                                                @Override public void onFail() {
-                                                    runOnUiThread(new Runnable() {
-                                                        @Override public void run() {
-                                                            mCurrentSelectedPath.clear();
-//                                            progressBar.setVisibility(View.GONE);
-                                                        }
-                                                    });
-                                                }
-                                            });
-                                            Info info = new Info();
-                                            Double weight = Double.valueOf(MMKVUtils.getString("weight", "66.2"));
-                                            Double latest = Double.valueOf(MMKVUtils.getString("latest_weight", "66.2"));
-                                            int user_use_day = MMKVUtils.getInt("user_use_day", 0);
-                                            Double all_weight = (weight - latest);
-                                            String setContentString = "您已经使用本应用" + user_use_day + "天" + "\n" + "您已经使用本应用减轻体重" + new DecimalFormat("0.00").format(all_weight) + "千克";
-                                            info.setContent(setContentString);
-                                            info.setImageList(mCurrentSelectedPath);
-                                            drawLongPictureUtil.setData(info);
-                                            drawLongPictureUtil.startDraw();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                            dialog.dismiss();
-                                        }
-                                    },
-                                    "否",
-                                    new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            XToastUtils.toast("您拒绝了分享到微信");
-                                            dialog.dismiss();
-                                        }
-                                    }
-                            );
-
-
-
-
-//                            ShareUtils.shareWeb(mainActivity, Defaultcontent.url, Defaultcontent.title
-//                                    , Defaultcontent.text, Defaultcontent.imageurl, R.mipmap.icon_logo_share, SHARE_MEDIA.WEIXIN
-//                            );
-
-                        }
-                        else if(itemView.toString().equals("Send to discover")){
-
-
-                            DialogLoader.getInstance().showConfirmDialog(
-                                    MainActivity.this,
-                                    "是否同意分享到朋友圈，该操作会打开微信",
-                                    "是",
-                                    new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            mainActivity.onPageSelected(0);
-                                            Utils.showCaptureBitmap((WebView) findViewById(R.id.myView));
-                                            View dView = (WebView) findViewById(R.id.myView);
-                                            dView.clearFocus();
-                                            dView.setDrawingCacheEnabled(true);
-                                            dView.buildDrawingCache();
-                                            Bitmap bmp = dView.getDrawingCache();
-
-                                            Calendar calendar = Calendar.getInstance();
-                                            int hour = calendar.get(Calendar.HOUR_OF_DAY);
-                                            String hour_s;
-                                            if(hour < 10){
-                                                hour_s = "0" + String.valueOf(hour);
-                                            }
-                                            else{
-                                                hour_s = String.valueOf(hour);
-                                            }
-                                            //����
-                                            int minute = calendar.get(Calendar.MINUTE);
-                                            String minute_s;
-                                            if(minute < 10){
-                                                minute_s = "0" + String.valueOf(minute);
-                                            }
-                                            else{
-                                                minute_s = String.valueOf(minute);
-                                            }
-                                            //��
-                                            int second = calendar.get(Calendar.SECOND);
-                                            String second_s;
-                                            if(second < 10){
-                                                second_s = "0" + String.valueOf(second);
-                                            }
-                                            else{
-                                                second_s = String.valueOf(second);
-                                            }
-                                            String time_string;
-                                            time_string = hour_s + "_" + minute_s + "_" + second_s;
-                                            String photo_name = "share_photo_" + time_string + ".jpg";
-
-                                            saveBitmap(bmp,photo_name);
-
-
-//                            View dView = getWindow().getDecorView();
-//                            dView.setDrawingCacheEnabled(true);
-//                            dView.buildDrawingCache();
-//                            Bitmap bmp = dView.getDrawingCache();
-
-//                            if (bmp != null) {
-//                                try {
-//                                    // 获取状态栏高度
-//                                    Rect rect = new Rect();
-//                                    dView.getWindowVisibleDisplayFrame(rect);
-//                                    int statusBarHeights = rect.top;
-//                                    Display display = getWindowManager().getDefaultDisplay();
-//                                    int widths = display.getWidth();
-//                                    int heights = display.getHeight();
-//                                    // 去掉状态栏
-//                                    saveBitmap = Bitmap.createBitmap(dView.getDrawingCache(), 0, statusBarHeights,
-//                                            widths, heights - statusBarHeights);
+//                                            Calendar calendar = Calendar.getInstance();
+//                                            int hour = calendar.get(Calendar.HOUR_OF_DAY);
+//                                            String hour_s;
+//                                            if(hour < 10){
+//                                                hour_s = "0" + String.valueOf(hour);
+//                                            }
+//                                            else{
+//                                                hour_s = String.valueOf(hour);
+//                                            }
+//                                            //����
+//                                            int minute = calendar.get(Calendar.MINUTE);
+//                                            String minute_s;
+//                                            if(minute < 10){
+//                                                minute_s = "0" + String.valueOf(minute);
+//                                            }
+//                                            else{
+//                                                minute_s = String.valueOf(minute);
+//                                            }
+//                                            //��
+//                                            int second = calendar.get(Calendar.SECOND);
+//                                            String second_s;
+//                                            if(second < 10){
+//                                                second_s = "0" + String.valueOf(second);
+//                                            }
+//                                            else{
+//                                                second_s = String.valueOf(second);
+//                                            }
+//                                            String time_string;
+//                                            time_string = hour_s + "_" + minute_s + "_" + second_s;
+//                                            String photo_name = "share_photo_" + time_string + ".jpg";
+//
+//                                            saveBitmap(bmp,photo_name);
 //
 //
+////                            View dView = getWindow().getDecorView();
+////                            dView.setDrawingCacheEnabled(true);
+////                            dView.buildDrawingCache();
+////                            Bitmap bmp = dView.getDrawingCache();
 //
-//
-//                                } catch (Exception e) {
-//                                    e.printStackTrace();
-//                                }
-//                            } else {
-////            initHandler.sendMessage(Message.obtain());
-//                            }
-
-
-                                            try {
-                                                Thread.sleep(500);
-                                            } catch (InterruptedException e) {
-                                                e.printStackTrace();
-                                            }
-
-                                            mCurrentSelectedPath.add(Environment.getExternalStorageDirectory() + "/share_photo/" + photo_name);
-
-                                            //mCurrentSelectedPath.add(Environment.getExternalStorageDirectory() + "/zip/zipped.jpg");
-                                            progressBar.setVisibility(View.VISIBLE);
-
-                                            DrawLongPictureUtil drawLongPictureUtil;
-
-
-                                            drawLongPictureUtil = new DrawLongPictureUtil(MainActivity.this);
-                                            drawLongPictureUtil.setListener(new DrawLongPictureUtil.Listener() {
-                                                @Override public void onSuccess(String path) {
-                                                    runOnUiThread(new Runnable() {
-                                                        @Override public void run() {
-                                                            progressBar.setVisibility(View.GONE);
-//                                            Toast.makeText(MainActivity.this.getApplicationContext(), "长图生成完成，点击下方按钮查看！",
-//                                                    Toast.LENGTH_LONG).show();
-                                                        }
-                                                    });
-                                                    resultPath = path;
-                                                    Bitmap bitmap = BitmapFactory.decodeFile(resultPath);
-                                                    ShareUtils.sharePhoto(mainActivity, bitmap, Defaultcontent.title
-                                                            , Defaultcontent.text, Defaultcontent.imageurl, R.mipmap.a6, SHARE_MEDIA.WEIXIN_CIRCLE
-                                                    );
-                                                    mCurrentSelectedPath.clear();
-
-//                                    ShareUtils.sharePhoto(mainActivity, bitmap, Defaultcontent.title
-//                                            , Defaultcontent.text, Defaultcontent.imageurl, R.mipmap.a6, SHARE_MEDIA.WEIXIN
-//                                    );
-                                                }
-
-                                                @Override public void onFail() {
-                                                    runOnUiThread(new Runnable() {
-                                                        @Override public void run() {
-                                                            mCurrentSelectedPath.clear();
-//                                            progressBar.setVisibility(View.GONE);
-                                                        }
-                                                    });
-                                                }
-                                            });
-                                            Info info = new Info();
-                                            Double weight = Double.valueOf(MMKVUtils.getString("weight", "66.2"));
-                                            Double latest = Double.valueOf(MMKVUtils.getString("latest_weight", "66.2"));
-                                            int user_use_day = MMKVUtils.getInt("user_use_day", 0);
-                                            Double all_weight = (weight - latest);
-                                            String setContentString = "您已经使用本应用" + user_use_day + "天" + "\n" + "您已经使用本应用减轻体重" + new DecimalFormat("0.00").format(all_weight) + "千克";
-                                            info.setContent(setContentString);
-                                            info.setImageList(mCurrentSelectedPath);
-                                            drawLongPictureUtil.setData(info);
-                                            drawLongPictureUtil.startDraw();
-
-
-                                            dialog.dismiss();
-                                        }
-                                    },
-                                    "否",
-                                    new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            XToastUtils.toast("您拒绝了分享到朋友圈");
-                                            dialog.dismiss();
-                                        }
-                                    }
-                            );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//                            ShareUtils.shareWeb(mainActivity, Defaultcontent.url, Defaultcontent.title
-//                                    , Defaultcontent.text, Defaultcontent.imageurl, R.mipmap.icon_logo_share, SHARE_MEDIA.WEIXIN
-//                            );
-                        }
-
-                        else if(itemView.toString().equals("Send to weibo")){
-                            XToastUtils.toast("抱歉，该功能目前还不可用");
-//                            List<String>time_list_array = new ArrayList<>();
-//                            time_list_array.add("2020.09.05-00:15:00");
-//                            time_list_array.add("2020.09.05-00:35:00");
-//                            time_list_array.add("2020.09.05-00:15:00;2020.09.05-01:05:00");
-//                            time_list_array.add("2020.09.05-00:15:00;2020.09.05-01:35:00");
-//                            time_list_array.add("2020.09.05-00:15:00;2020.09.05-01:05:00");
-//                            time_list_array.add("2020.09.05-00:35:00;2020.09.05-01:43:00");
-//                            time_list_array.add("2020.09.05-00:15:00;2020.09.05-00:35:00");
-//                            time_list_array.add("2020.09.04-00:15:00;2020.09.05-01:05:00");
-//
-//                            time_list_array.add("2020.09.05-00:15:00;2020.09.05-03:05:00");
-//                            time_list_array.add("2020.09.05-00:15:00;2020.09.05-17:05:00");
-//                            time_list_array.add("2020.09.05-00:15:00;2020.09.05-22:05:00");
-//                            time_list_array.add("2020.09.05-00:15:00;2020.09.05-12:05:00");
-//
-//                            time_list_array.add("2020.09.05-03:15:00;2020.09.05-12:35:00");
-//                            time_list_array.add("2020.09.05-03:15:00;2020.09.05-15:05:00");
-//                            time_list_array.add("2020.09.05-03:15:00;2020.09.05-18:05:00");
-//                            time_list_array.add("2020.09.05-03:15:00;2020.09.05-22:35:00");
-//                            time_list_array.add("2020.09.05-03:15:00;2020.09.06-01:05:00");
-//                            time_list_array.add("2020.09.05-03:15:00;2020.09.05-08:05:00");
-//
-//                            time_list_array.add("2020.09.05-10:35:00;2020.09.05-14:05:00");
-//                            time_list_array.add("2020.09.05-10:35:00;2020.09.05-23:05:00");
-//                            time_list_array.add("2020.09.05-10:35:00;2020.09.05-17:05:00");
-//                            time_list_array.add("2020.09.05-10:35:00;2020.09.06-01:30:00");
-//                            time_list_array.add("2020.09.05-10:35:00;2020.09.05-19:35:00");
-//
-//                            time_list_array.add("2020.09.05-17:35:00;2020.09.05-18:15:00");
-//                            time_list_array.add("2020.09.05-17:35:00");
-//                            time_list_array.add("2020.09.05-17:35:00;2020.09.05-22:15:00");
-//                            time_list_array.add("2020.09.05-17:35:00;2020.09.06-00:15:00");
-//
-//                            time_list_array.add("2020.09.05-22:05:00;2020.09.05-22:15:00");
-//                            time_list_array.add("2020.09.05-22:05:00");
-//                            time_list_array.add("2020.09.05-22:05:00;2020.09.06-01:35:00");
-//                            time_list_array.add("2020.09.06-00:15:00;2020.09.06-01:35:00");
-//
-//
-//
-//                            for(int k = 0; k< 1;k++){
-//                                MMKVUtils.put("current_flag", k);
-//                                for(int j =0; j < 10;j++){
-//                                    MMKVUtils.put("is_draw_debug", j);
-//                                    mainActivity.onPageSelected(1);
-//                                    mainActivity.onPageSelected(0);
-////                                    Utils.showCaptureBitmap((WebView) findViewById(R.id.myView));
-////                                    View dView = (WebView) findViewById(R.id.myView);
-////                                    dView.setDrawingCacheEnabled(true);
-////                                    dView.buildDrawingCache();
-////                                    Bitmap bmp = dView.getDrawingCache();
-////                                    String time_string = time_list_array.get(j) + "_" + k;
-////                                    String photo_name = time_string + ".jpg";
+////                            if (bmp != null) {
+////                                try {
+////                                    // 获取状态栏高度
+////                                    Rect rect = new Rect();
+////                                    dView.getWindowVisibleDisplayFrame(rect);
+////                                    int statusBarHeights = rect.top;
+////                                    Display display = getWindowManager().getDefaultDisplay();
+////                                    int widths = display.getWidth();
+////                                    int heights = display.getHeight();
+////                                    // 去掉状态栏
+////                                    saveBitmap = Bitmap.createBitmap(dView.getDrawingCache(), 0, statusBarHeights,
+////                                            widths, heights - statusBarHeights);
 ////
-////                                    saveBitmap(bmp,photo_name);
-//                                }
-//                            }
-//                            MMKVUtils.put("is_draw_debug", -1);
-
-
-
-
-
-
-                        }
-                        else if(itemView.toString().equals("Send to chat")) {
-                            XToastUtils.toast("抱歉，该功能目前还不可用");
-
-                        }
-
-                    }
-                }).build().show();
-
-
+////
+////
+////
+////                                } catch (Exception e) {
+////                                    e.printStackTrace();
+////                                }
+////                            } else {
+//////            initHandler.sendMessage(Message.obtain());
+////                            }
+//
+//
+//                                            try {
+//                                                Thread.sleep(500);
+//                                            } catch (InterruptedException e) {
+//                                                e.printStackTrace();
+//                                            }
+//
+//                                            mCurrentSelectedPath.add(Environment.getExternalStorageDirectory() + "/share_photo/" + photo_name);
+//
+//                                            //mCurrentSelectedPath.add(Environment.getExternalStorageDirectory() + "/zip/zipped.jpg");
+//                                            progressBar.setVisibility(View.VISIBLE);
+//
+//                                            DrawLongPictureUtil drawLongPictureUtil;
+//
+//
+//                                            drawLongPictureUtil = new DrawLongPictureUtil(MainActivity.this);
+//                                            drawLongPictureUtil.setListener(new DrawLongPictureUtil.Listener() {
+//                                                @Override public void onSuccess(String path) {
+//                                                    runOnUiThread(new Runnable() {
+//                                                        @Override public void run() {
+//                                                            progressBar.setVisibility(View.GONE);
+////                                            Toast.makeText(MainActivity.this.getApplicationContext(), "长图生成完成，点击下方按钮查看！",
+////                                                    Toast.LENGTH_LONG).show();
+//                                                        }
+//                                                    });
+//                                                    resultPath = path;
+//                                                    Bitmap bitmap = BitmapFactory.decodeFile(resultPath);
+//                                                    ShareUtils.sharePhoto(mainActivity, bitmap, Defaultcontent.title
+//                                                            , Defaultcontent.text, Defaultcontent.imageurl, R.mipmap.a6, SHARE_MEDIA.WEIXIN
+//                                                    );
+//                                                    mCurrentSelectedPath.clear();
+//
+////                                    ShareUtils.sharePhoto(mainActivity, bitmap, Defaultcontent.title
+////                                            , Defaultcontent.text, Defaultcontent.imageurl, R.mipmap.a6, SHARE_MEDIA.WEIXIN
+////                                    );
+//                                                }
+//
+//                                                @Override public void onFail() {
+//                                                    runOnUiThread(new Runnable() {
+//                                                        @Override public void run() {
+//                                                            mCurrentSelectedPath.clear();
+////                                            progressBar.setVisibility(View.GONE);
+//                                                        }
+//                                                    });
+//                                                }
+//                                            });
+//                                            Info info = new Info();
+//                                            Double weight = Double.valueOf(MMKVUtils.getString("weight", "66.2"));
+//                                            Double latest = Double.valueOf(MMKVUtils.getString("latest_weight", "66.2"));
+//                                            int user_use_day = MMKVUtils.getInt("user_use_day", 0);
+//                                            Double all_weight = (weight - latest);
+//                                            String setContentString = "您已经使用本应用" + user_use_day + "天" + "\n" + "您已经使用本应用减轻体重" + new DecimalFormat("0.00").format(all_weight) + "千克";
+//                                            info.setContent(setContentString);
+//                                            info.setImageList(mCurrentSelectedPath);
+//                                            drawLongPictureUtil.setData(info);
+//                                            drawLongPictureUtil.startDraw();
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//                                            dialog.dismiss();
+//                                        }
+//                                    },
+//                                    "否",
+//                                    new DialogInterface.OnClickListener() {
+//                                        @Override
+//                                        public void onClick(DialogInterface dialog, int which) {
+//                                            XToastUtils.toast("您拒绝了分享到微信");
+//                                            dialog.dismiss();
+//                                        }
+//                                    }
+//                            );
+//
+//
+//
+//
+////                            ShareUtils.shareWeb(mainActivity, Defaultcontent.url, Defaultcontent.title
+////                                    , Defaultcontent.text, Defaultcontent.imageurl, R.mipmap.icon_logo_share, SHARE_MEDIA.WEIXIN
+////                            );
+//
+//                        }
+//                        else if(itemView.toString().equals("Send to discover")){
+//
+//
+//                            DialogLoader.getInstance().showConfirmDialog(
+//                                    MainActivity.this,
+//                                    "是否同意分享到朋友圈，该操作会打开微信",
+//                                    "是",
+//                                    new DialogInterface.OnClickListener() {
+//                                        @Override
+//                                        public void onClick(DialogInterface dialog, int which) {
+//                                            mainActivity.onPageSelected(0);
+//                                            Utils.showCaptureBitmap((WebView) findViewById(R.id.myView));
+//                                            View dView = (WebView) findViewById(R.id.myView);
+//                                            dView.clearFocus();
+//                                            dView.setDrawingCacheEnabled(true);
+//                                            dView.buildDrawingCache();
+//                                            Bitmap bmp = dView.getDrawingCache();
+//
+//                                            Calendar calendar = Calendar.getInstance();
+//                                            int hour = calendar.get(Calendar.HOUR_OF_DAY);
+//                                            String hour_s;
+//                                            if(hour < 10){
+//                                                hour_s = "0" + String.valueOf(hour);
+//                                            }
+//                                            else{
+//                                                hour_s = String.valueOf(hour);
+//                                            }
+//                                            //����
+//                                            int minute = calendar.get(Calendar.MINUTE);
+//                                            String minute_s;
+//                                            if(minute < 10){
+//                                                minute_s = "0" + String.valueOf(minute);
+//                                            }
+//                                            else{
+//                                                minute_s = String.valueOf(minute);
+//                                            }
+//                                            //��
+//                                            int second = calendar.get(Calendar.SECOND);
+//                                            String second_s;
+//                                            if(second < 10){
+//                                                second_s = "0" + String.valueOf(second);
+//                                            }
+//                                            else{
+//                                                second_s = String.valueOf(second);
+//                                            }
+//                                            String time_string;
+//                                            time_string = hour_s + "_" + minute_s + "_" + second_s;
+//                                            String photo_name = "share_photo_" + time_string + ".jpg";
+//
+//                                            saveBitmap(bmp,photo_name);
+//
+//
+////                            View dView = getWindow().getDecorView();
+////                            dView.setDrawingCacheEnabled(true);
+////                            dView.buildDrawingCache();
+////                            Bitmap bmp = dView.getDrawingCache();
+//
+////                            if (bmp != null) {
+////                                try {
+////                                    // 获取状态栏高度
+////                                    Rect rect = new Rect();
+////                                    dView.getWindowVisibleDisplayFrame(rect);
+////                                    int statusBarHeights = rect.top;
+////                                    Display display = getWindowManager().getDefaultDisplay();
+////                                    int widths = display.getWidth();
+////                                    int heights = display.getHeight();
+////                                    // 去掉状态栏
+////                                    saveBitmap = Bitmap.createBitmap(dView.getDrawingCache(), 0, statusBarHeights,
+////                                            widths, heights - statusBarHeights);
+////
+////
+////
+////
+////                                } catch (Exception e) {
+////                                    e.printStackTrace();
+////                                }
+////                            } else {
+//////            initHandler.sendMessage(Message.obtain());
+////                            }
+//
+//
+//                                            try {
+//                                                Thread.sleep(500);
+//                                            } catch (InterruptedException e) {
+//                                                e.printStackTrace();
+//                                            }
+//
+//                                            mCurrentSelectedPath.add(Environment.getExternalStorageDirectory() + "/share_photo/" + photo_name);
+//
+//                                            //mCurrentSelectedPath.add(Environment.getExternalStorageDirectory() + "/zip/zipped.jpg");
+//                                            progressBar.setVisibility(View.VISIBLE);
+//
+//                                            DrawLongPictureUtil drawLongPictureUtil;
+//
+//
+//                                            drawLongPictureUtil = new DrawLongPictureUtil(MainActivity.this);
+//                                            drawLongPictureUtil.setListener(new DrawLongPictureUtil.Listener() {
+//                                                @Override public void onSuccess(String path) {
+//                                                    runOnUiThread(new Runnable() {
+//                                                        @Override public void run() {
+//                                                            progressBar.setVisibility(View.GONE);
+////                                            Toast.makeText(MainActivity.this.getApplicationContext(), "长图生成完成，点击下方按钮查看！",
+////                                                    Toast.LENGTH_LONG).show();
+//                                                        }
+//                                                    });
+//                                                    resultPath = path;
+//                                                    Bitmap bitmap = BitmapFactory.decodeFile(resultPath);
+//                                                    ShareUtils.sharePhoto(mainActivity, bitmap, Defaultcontent.title
+//                                                            , Defaultcontent.text, Defaultcontent.imageurl, R.mipmap.a6, SHARE_MEDIA.WEIXIN_CIRCLE
+//                                                    );
+//                                                    mCurrentSelectedPath.clear();
+//
+////                                    ShareUtils.sharePhoto(mainActivity, bitmap, Defaultcontent.title
+////                                            , Defaultcontent.text, Defaultcontent.imageurl, R.mipmap.a6, SHARE_MEDIA.WEIXIN
+////                                    );
+//                                                }
+//
+//                                                @Override public void onFail() {
+//                                                    runOnUiThread(new Runnable() {
+//                                                        @Override public void run() {
+//                                                            mCurrentSelectedPath.clear();
+////                                            progressBar.setVisibility(View.GONE);
+//                                                        }
+//                                                    });
+//                                                }
+//                                            });
+//                                            Info info = new Info();
+//                                            Double weight = Double.valueOf(MMKVUtils.getString("weight", "66.2"));
+//                                            Double latest = Double.valueOf(MMKVUtils.getString("latest_weight", "66.2"));
+//                                            int user_use_day = MMKVUtils.getInt("user_use_day", 0);
+//                                            Double all_weight = (weight - latest);
+//                                            String setContentString = "您已经使用本应用" + user_use_day + "天" + "\n" + "您已经使用本应用减轻体重" + new DecimalFormat("0.00").format(all_weight) + "千克";
+//                                            info.setContent(setContentString);
+//                                            info.setImageList(mCurrentSelectedPath);
+//                                            drawLongPictureUtil.setData(info);
+//                                            drawLongPictureUtil.startDraw();
+//
+//
+//                                            dialog.dismiss();
+//                                        }
+//                                    },
+//                                    "否",
+//                                    new DialogInterface.OnClickListener() {
+//                                        @Override
+//                                        public void onClick(DialogInterface dialog, int which) {
+//                                            XToastUtils.toast("您拒绝了分享到朋友圈");
+//                                            dialog.dismiss();
+//                                        }
+//                                    }
+//                            );
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+////                            ShareUtils.shareWeb(mainActivity, Defaultcontent.url, Defaultcontent.title
+////                                    , Defaultcontent.text, Defaultcontent.imageurl, R.mipmap.icon_logo_share, SHARE_MEDIA.WEIXIN
+////                            );
+//                        }
+//
+//                        else if(itemView.toString().equals("Send to weibo")){
+//                            XToastUtils.toast("抱歉，该功能目前还不可用");
+////                            List<String>time_list_array = new ArrayList<>();
+////                            time_list_array.add("2020.09.05-00:15:00");
+////                            time_list_array.add("2020.09.05-00:35:00");
+////                            time_list_array.add("2020.09.05-00:15:00;2020.09.05-01:05:00");
+////                            time_list_array.add("2020.09.05-00:15:00;2020.09.05-01:35:00");
+////                            time_list_array.add("2020.09.05-00:15:00;2020.09.05-01:05:00");
+////                            time_list_array.add("2020.09.05-00:35:00;2020.09.05-01:43:00");
+////                            time_list_array.add("2020.09.05-00:15:00;2020.09.05-00:35:00");
+////                            time_list_array.add("2020.09.04-00:15:00;2020.09.05-01:05:00");
+////
+////                            time_list_array.add("2020.09.05-00:15:00;2020.09.05-03:05:00");
+////                            time_list_array.add("2020.09.05-00:15:00;2020.09.05-17:05:00");
+////                            time_list_array.add("2020.09.05-00:15:00;2020.09.05-22:05:00");
+////                            time_list_array.add("2020.09.05-00:15:00;2020.09.05-12:05:00");
+////
+////                            time_list_array.add("2020.09.05-03:15:00;2020.09.05-12:35:00");
+////                            time_list_array.add("2020.09.05-03:15:00;2020.09.05-15:05:00");
+////                            time_list_array.add("2020.09.05-03:15:00;2020.09.05-18:05:00");
+////                            time_list_array.add("2020.09.05-03:15:00;2020.09.05-22:35:00");
+////                            time_list_array.add("2020.09.05-03:15:00;2020.09.06-01:05:00");
+////                            time_list_array.add("2020.09.05-03:15:00;2020.09.05-08:05:00");
+////
+////                            time_list_array.add("2020.09.05-10:35:00;2020.09.05-14:05:00");
+////                            time_list_array.add("2020.09.05-10:35:00;2020.09.05-23:05:00");
+////                            time_list_array.add("2020.09.05-10:35:00;2020.09.05-17:05:00");
+////                            time_list_array.add("2020.09.05-10:35:00;2020.09.06-01:30:00");
+////                            time_list_array.add("2020.09.05-10:35:00;2020.09.05-19:35:00");
+////
+////                            time_list_array.add("2020.09.05-17:35:00;2020.09.05-18:15:00");
+////                            time_list_array.add("2020.09.05-17:35:00");
+////                            time_list_array.add("2020.09.05-17:35:00;2020.09.05-22:15:00");
+////                            time_list_array.add("2020.09.05-17:35:00;2020.09.06-00:15:00");
+////
+////                            time_list_array.add("2020.09.05-22:05:00;2020.09.05-22:15:00");
+////                            time_list_array.add("2020.09.05-22:05:00");
+////                            time_list_array.add("2020.09.05-22:05:00;2020.09.06-01:35:00");
+////                            time_list_array.add("2020.09.06-00:15:00;2020.09.06-01:35:00");
+////
+////
+////
+////                            for(int k = 0; k< 1;k++){
+////                                MMKVUtils.put("current_flag", k);
+////                                for(int j =0; j < 10;j++){
+////                                    MMKVUtils.put("is_draw_debug", j);
+////                                    mainActivity.onPageSelected(1);
+////                                    mainActivity.onPageSelected(0);
+//////                                    Utils.showCaptureBitmap((WebView) findViewById(R.id.myView));
+//////                                    View dView = (WebView) findViewById(R.id.myView);
+//////                                    dView.setDrawingCacheEnabled(true);
+//////                                    dView.buildDrawingCache();
+//////                                    Bitmap bmp = dView.getDrawingCache();
+//////                                    String time_string = time_list_array.get(j) + "_" + k;
+//////                                    String photo_name = time_string + ".jpg";
+//////
+//////                                    saveBitmap(bmp,photo_name);
+////                                }
+////                            }
+////                            MMKVUtils.put("is_draw_debug", -1);
+//
+//
+//
+//
+//
+//
+//                        }
+//                        else if(itemView.toString().equals("Send to chat")) {
+//                            XToastUtils.toast("抱歉，该功能目前还不可用");
+//
+//                        }
+//
+//                    }
+//                }).build().show();
+//
+//}
     }
 
     public String getDietTime(String ss)
@@ -1594,7 +1635,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 String user_name = cursor.getString(cursor.getColumnIndex("user_name"));
                 String user_time = cursor.getString(cursor.getColumnIndex("user_time"));
                 String photo_type = cursor.getString(cursor.getColumnIndex("photo_type"));
-                if(photo_type.equals("food")){
+                if(photo_type.equals("Yes")||photo_type.equals("food")){
                     String[] temp123 = user_time.split("-");
                     String temp_year = temp123[0].split("\\.")[0];
                     String temp_month = temp123[0].split("\\.")[1];

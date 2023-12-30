@@ -40,7 +40,7 @@
                 <TextView
                     style="@style/TextStyle.Explain"
                     android:layout_margin="10dp"
-                    android:text="性别：" />
+                    android:text="Gender：" />
 
                 <com.xuexiang.xui.widget.tabbar.TabControlView
                     android:id="@+id/tcv_select"
@@ -63,7 +63,7 @@
                 <TextView
                     style="@style/TextStyle.Content"
                     android:layout_marginStart="10dp"
-                    android:text="体重" />
+                    android:text="Weight" />
 
                 <!--                <EditText-->
                 <!--                    android:id="@+id/et_weight"-->
@@ -115,7 +115,7 @@
             <TextView
                 style="@style/TextStyle.Content.wrap"
                 android:layout_marginStart="10dp"
-                android:text="身高" />
+                android:text="Height" />
 
             <com.xuexiang.xui.widget.picker.RulerView
                 android:id="@+id/rulerView1"
@@ -153,12 +153,12 @@
                 <com.xuexiang.xui.widget.textview.supertextview.SuperButton
                     android:id="@+id/button_yes"
                     style="@style/SuperButton.Blue"
-                    android:text="确认"
+                    android:text="Save"
                     android:layout_marginStart="20dp" />
                 <com.xuexiang.xui.widget.textview.supertextview.SuperButton
                     android:id="@+id/button_skip"
                     style="@style/SuperButton.Blue"
-                    android:text="跳过"
+                    android:text="Skip"
                     android:layout_marginStart="20dp" />
 
 

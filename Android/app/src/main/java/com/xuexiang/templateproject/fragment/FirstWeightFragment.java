@@ -98,7 +98,7 @@ public class FirstWeightFragment extends BaseFragment {
 //    }
     private void initTabControlView() {
         try {
-            mTabControlView.setItems(ResUtils.getStringArray(R.array.course_param_option),ResUtils.getStringArray(R.array.course_param_value));
+            mTabControlView.setItems(ResUtils.getStringArray(R.array.course_param_option_sex),ResUtils.getStringArray(R.array.course_param_option_sex));
             mTabControlView.setDefaultSelection(1);
 
 

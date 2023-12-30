@@ -2427,7 +2427,6 @@ public static String getDataHeatmapType(List<String> new_date_list, String diet_
     }else{
         first_time_redu = (Integer.valueOf(temp_minute)-30)*60+Integer.valueOf(temp21[2]);
         temp_minute = "30";
-
     }
     String new_first_input_current_time = first_input_current_time.split("-")[0] + "-" + temp_hour + ":" + temp_minute + ":" + "00";
 
