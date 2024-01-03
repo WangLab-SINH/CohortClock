@@ -364,16 +364,22 @@ public class TrendingFragment extends BaseFragment {
         index_raw.add("Exercise duration");
         index_raw.add("Sleep time");
         String new_index_name = "";
+
         for(int i = 0; i < index_info.length;i++ ){
-            String temp_index_name = index_info[i].split(";")[2];
-            if(!index_raw.contains(temp_index_name)){
-                if(new_index_name.equals("")){
-                    new_index_name = new_index_name + temp_index_name;
-                }else{
-                    new_index_name = new_index_name + ";" + temp_index_name;
+            if(index_info[i].split(";").length > 1){
+                String temp_index_name = index_info[i].split(";")[2];
+                if(!index_raw.contains(temp_index_name)){
+                    if(new_index_name.equals("")){
+                        new_index_name = new_index_name + temp_index_name;
+                    }else{
+                        new_index_name = new_index_name + ";" + temp_index_name;
+                    }
                 }
             }
+
         }
+
+
         myView.loadUrl("file:///android_asset/index.html#/"+"?name="+new_index_name);
 //        myView.loadUrl("http://10.10.114.202:8080/#/"+"?name="+new_index_name);
 //        myView.loadUrl("file:///android_asset/index.html"+"&name=testA;testB");
