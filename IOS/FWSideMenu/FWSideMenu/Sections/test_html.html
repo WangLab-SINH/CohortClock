@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+                // 这个是ios调用的方法
+        function navButtonAction(name, age) {
+            document.getElementsByTagName('h1')[0].innerText = "ios原生调用js方法改变h5页面样式";
+            var resForDic = {name:name,age:age};
+            return resForDic;
+        }
+                // 这个是js调用ios的方法
+        function buttonAction() {
+            try {
+                window.webkit.messageHandlers.jsToIOS.postMessage("这是js传递到ios的数据");
+            } catch (e) {
+                
+            }
+        }
+    </script>
+</head>
+<body>
+    <button onclick="buttonAction()">JS向IOS发消息</button>
+    <h1>这是一个h1标签</h1>
+    <h2>这是一个h2标签</h2>
+</body>
+</html>

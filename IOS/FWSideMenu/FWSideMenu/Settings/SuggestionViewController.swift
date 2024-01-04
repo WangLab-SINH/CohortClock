@@ -25,7 +25,7 @@ class SuggestionViewController: UIViewController, UIScrollViewDelegate, UITextVi
     private lazy var textView: QMUITextView = {
         let textView = QMUITextView()
         textView.delegate = self
-        textView.placeholder = "说点什么吧。。。"
+        textView.placeholder = "Write something"
         textView.placeholderColor = UIColorPlaceholder
         textView.autoResizable = true
         textView.font = UIFont.systemFont(ofSize: 20)
@@ -40,7 +40,7 @@ class SuggestionViewController: UIViewController, UIScrollViewDelegate, UITextVi
     private lazy var textView1: QMUITextView = {
         let textView = QMUITextView()
         textView.delegate = self
-        textView.placeholder = "请输入您的邮箱以便及时接受反馈消息"
+        textView.placeholder = "Please write your email"
         textView.placeholderColor = UIColorPlaceholder
         textView.autoResizable = true
         textView.font = UIFont.systemFont(ofSize: 20)
@@ -55,7 +55,7 @@ class SuggestionViewController: UIViewController, UIScrollViewDelegate, UITextVi
     private lazy var fillButton1: QMUIFillButton = {
         let fillButton = QMUIFillButton(fillType: .blue)
         fillButton.titleLabel?.font = UIFontMake(14)
-        fillButton.setTitle("确认", for: .normal)
+        fillButton.setTitle("Submit", for: .normal)
         fillButton.addTarget(self, action:#selector(uploadInfo), for: .touchUpInside)
         return fillButton
     }()

@@ -2353,6 +2353,7 @@
 				DEVELOPMENT_TEAM = BYU5QJUYR9;
 				INFOPLIST_FILE = FWSideMenu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chiyuhao.FWSideMenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2372,6 +2373,7 @@
 				DEVELOPMENT_TEAM = BYU5QJUYR9;
 				INFOPLIST_FILE = FWSideMenu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chiyuhao.FWSideMenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

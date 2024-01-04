@@ -1,0 +1,186 @@
+<!--
+  ~ Copyright (C) 2021 xuexiangjys(xuexiangjys@163.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~       http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--    <script src="echarts.min.js"></script>-->
+    <!--    <script src="echarts.js"></script>-->
+    <!--    <script src="echarts-gl.js"></script>-->
+    <!--    <script src="chart/lib/echarts.min.js"></script>-->
+    <!--    <script src="chart/js/echarts-all.js"></script>-->
+    <script src="echarts.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+
+<style>.box { justify-content:center; display:flex; flex-wrap:wrap;  }; </style>
+<div class="box">
+    <div id="view" class="chart-container" style="width: 500px;height: 300px;"></div>
+    <div id="view1" class="chart-container" style="width: 500px;height: 300px;"></div>
+    <script>
+        var myCharts=echarts.init(document.getElementById("view"));
+        var myCharts2=echarts.init(document.getElementById("view1"));
+
+        function setView(name, name1){
+            //这里访问安卓代码
+            var data1=name1 ;
+            var x_axis=name ;
+            //这里访问安卓代码
+            //var data2=eval(android.getT5Data(2)) ;
+            //这里访问安卓代码
+            //对图像进行配置
+        var option={
+            tooltip : {
+            borderWidth: 0,
+                trigger: 'axis',
+<!--                axisPointer: {-->
+<!--                    type: 'cross',-->
+<!--                    label: {-->
+<!--                        backgroundColor: '#6a7985'-->
+<!--                    }-->
+<!--                },-->
+
+            },
+
+            legend: {
+                data: ['体重'],
+                selected:{'体重':true}
+            },
+            xAxis:
+            {
+                type : 'category',
+               data : x_axis,
+
+                axisTick: {
+                    alignWithLabel: true,
+
+                    }
+            }
+             ,
+            yAxis:
+                {
+                    type:'value',
+                    max:'dataMax',
+                    min:'dataMin'
+                }
+            ,
+
+            series:[
+            {
+                    name:'体重',
+                    type:'line',
+                    data:data1,
+                    lineStyle:{
+                        color:'#A4DFF6',
+
+                    },
+
+
+                    itmeStyle:{
+                        color:"#fe3332"
+                    },
+
+                    areaStyle: {
+                        color:"#A4DFF6"
+                    },
+                }
+
+
+
+            ]
+
+        };
+
+        //填充Dom  div必须具备高宽
+        myCharts.setOption(option);
+        }
+
+
+        function setView1(x_axis, data1){
+        
+
+            var option1 = {
+             tooltip: {
+    borderWidth: 0,
+    trigger: "axis",
+     triggerOn: "mousemove|click",
+
+        position: 'top',
+        formatter: "{a}</br>{b}",
+    },
+
+
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: x_axis,
+                axisTick: {
+                    alignWithLabel: true,
+
+                    }
+             },
+            yAxis: {
+                type: 'value'
+            },
+            series: [{
+            name: '体重',
+                data: data1,
+                type: 'line',
+                smooth: true,
+                lineStyle: {
+                    width: 0
+                },
+            showSymbol: false,
+            areaStyle: {
+                opacity: 0.8,
+                color: '#B5ECE7'
+            },
+            emphasis: {
+                focus: 'series'
+            },
+                showBackground: true,
+                backgroundStyle: {
+                    color: 'rgba(180, 180, 180, 0.2)'
+                    }
+                }]
+            };
+
+            myCharts2.setOption(option1)
+
+
+        }
+
+
+
+
+
+
+        setView();
+        setView1();
+
+
+
+    </script>
+</div>
+</body>
+</html>
+
+
