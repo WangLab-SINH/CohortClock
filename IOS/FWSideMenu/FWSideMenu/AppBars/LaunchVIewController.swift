@@ -25,11 +25,11 @@ class LaunchViewController: UIViewController, UIScrollViewDelegate, UITextViewDe
     
     let mmkv = MMKV(mmapID: "testSwift", mode: MMKVMode.singleProcess)
 
-    let items1 = ["男", "女"]
-    let items2 = ["是", "否"]
-    let items3 = ["是", "否"]
-    let items4 = ["是", "否"]
-    let items5 = ["白天", "晚上"]
+    let items1 = ["Male", "Female"]
+    let items2 = ["Yes", "No"]
+    let items3 = ["Yes", "No"]
+    let items4 = ["Yes", "No"]
+    let items5 = ["Day", "Night"]
     var label1: UILabel!
     
     var segments1: UISegmentedControl!
@@ -56,7 +56,7 @@ class LaunchViewController: UIViewController, UIScrollViewDelegate, UITextViewDe
         var sex:String = mmkv?.string(forKey: "sex") ?? "nil"
         
         var weight_default_value:Float = 57.3
-        if(sex == "男"){
+        if(sex == "Male"){
             weight_default_value = mmkv?.float(forKey: "weight") ?? 66.2
         }else{
             weight_default_value = mmkv?.float(forKey: "weight") ?? 57.3
@@ -80,7 +80,7 @@ class LaunchViewController: UIViewController, UIScrollViewDelegate, UITextViewDe
         var sex:String = mmkv?.string(forKey: "sex") ?? "nil"
         
         var weight_default_value:Float = 57.3
-        if(sex == "男"){
+        if(sex == "Male"){
             weight_default_value = mmkv?.float(forKey: "height") ?? 167.1
         }else{
             weight_default_value = mmkv?.float(forKey: "height") ?? 155.8
@@ -98,7 +98,7 @@ class LaunchViewController: UIViewController, UIScrollViewDelegate, UITextViewDe
     private lazy var textView: QMUITextView = {
         let textView = QMUITextView()
         textView.delegate = self
-        textView.placeholder = "请输入其他疾病"
+        textView.placeholder = "Other diesease"
         textView.placeholderColor = UIColorPlaceholder
         textView.autoResizable = true
         textView.textContainerInset = UIEdgeInsets(top: 10, left: 7, bottom: 10, right: 7)
@@ -112,7 +112,7 @@ class LaunchViewController: UIViewController, UIScrollViewDelegate, UITextViewDe
     private lazy var fillButton1: QMUIFillButton = {
         let fillButton = QMUIFillButton(fillType: .blue)
         fillButton.titleLabel?.font = UIFontMake(14)
-        fillButton.setTitle("确认", for: .normal)
+        fillButton.setTitle("Save", for: .normal)
         fillButton.addTarget(self, action:#selector(uploadInfo), for: .touchUpInside)
         return fillButton
     }()
@@ -169,21 +169,21 @@ class LaunchViewController: UIViewController, UIScrollViewDelegate, UITextViewDe
         
         
         var sex:String = mmkv?.string(forKey: "sex") ?? "nil"
-        if(sex == "男"){
+        if(sex == "Male"){
             segments1.selectedSegmentIndex = 0
         }else{
             segments1.selectedSegmentIndex = 1
         }
         
         var flag1:String = mmkv?.string(forKey: "diabetes") ?? "nil"
-        if(flag1 == "是"){
+        if(flag1 == "Yes"){
             segments2.selectedSegmentIndex = 0
         }else{
             segments2.selectedSegmentIndex = 1
         }
         
         var flag2:String = mmkv?.string(forKey: "bloodpressure") ?? "nil"
-        if(flag2 == "是"){
+        if(flag2 == "Yes"){
             segments3.selectedSegmentIndex = 0
         }else{
             segments3.selectedSegmentIndex = 1
@@ -191,7 +191,7 @@ class LaunchViewController: UIViewController, UIScrollViewDelegate, UITextViewDe
         
         
         var flag3:String = mmkv?.string(forKey: "obesity") ?? "nil"
-        if(flag3 == "是"){
+        if(flag3 == "Yes"){
             segments4.selectedSegmentIndex = 0
         }else{
             segments4.selectedSegmentIndex = 1
@@ -200,7 +200,7 @@ class LaunchViewController: UIViewController, UIScrollViewDelegate, UITextViewDe
         
         
         var flag4:String = mmkv?.string(forKey: "worktime") ?? "nil"
-        if(flag4 == "晚上"){
+        if(flag4 == "Night"){
             segments5.selectedSegmentIndex = 1
         }else{
             segments5.selectedSegmentIndex = 0
@@ -212,32 +212,32 @@ class LaunchViewController: UIViewController, UIScrollViewDelegate, UITextViewDe
 //        switch1.isOn = true
         
         sex_textview = UITextView()
-        sex_textview.text = "性别："
+        sex_textview.text = "Gender："
         sex_textview.font = UIFont.systemFont(ofSize: 20)
         
         
         weight_textview = UITextView()
-        weight_textview.text = "体重："
+        weight_textview.text = "Weight："
         weight_textview.font = UIFont.systemFont(ofSize: 20)
         
         height_textview = UITextView()
-        height_textview.text = "身高："
+        height_textview.text = "Height："
         height_textview.font = UIFont.systemFont(ofSize: 20)
         
         textview1 = UITextView()
-        textview1.text = "糖尿病："
+        textview1.text = "Diabetes："
         textview1.font = UIFont.systemFont(ofSize: 20)
         
         textview2 = UITextView()
-        textview2.text = "高血压："
+        textview2.text = "Hypertension："
         textview2.font = UIFont.systemFont(ofSize: 20)
         
         textview3 = UITextView()
-        textview3.text = "肥胖："
+        textview3.text = "Obesity："
         textview3.font = UIFont.systemFont(ofSize: 20)
         
         textview4 = UITextView()
-        textview4.text = "工作时间："
+        textview4.text = "Work time："
         textview4.font = UIFont.systemFont(ofSize: 20)
         
         

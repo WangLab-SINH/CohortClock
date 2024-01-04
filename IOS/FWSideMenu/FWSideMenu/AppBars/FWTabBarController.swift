@@ -183,7 +183,7 @@ class FWTabBarController: SwipeableTabBarController {
 //            debugPrint(response)
 //        }
 
-        AF.request("http://39.100.73.118/deeplearning_photo/ios_syn_database.php?androidid="+uuidName+"").responseString {response in
+        AF.request("http://39.100.73.118/deeplearning_photo/ios_syn_database_new.php?androidid="+uuidName+"").responseString {response in
                 //debugPrint("Response: \(response)")
             let result = response.value ?? "default"
             
@@ -276,7 +276,7 @@ extension FWTabBarController {
         
         //let vcArray:[UIViewController] = [TestHtmlCode(), ViewController(), ReloadController(), QworldViewController()]
 //        let titleArray = [("饮食习惯", "recent"), ("拍食物", "buddy"), ("更新", "see"), ("我的", "qworld")]
-        let titleArray = [("饮食习惯", "trending_photo_ios_new"), ("拍食物", "take_photo_plot_ios_new"), ("更新", "reupload_plot_ios_new"), ("我的", "tab_buddy_nor")]
+        let titleArray = [("Habits", "trending_photo_ios_new"), ("Main", "take_photo_plot_ios_new"), ("Body Metrics", "reupload_plot_ios_new"), ("My Information", "tab_buddy_nor")]
         
         for (index, vc) in vcArray.enumerated() {
             // 需要title的情况
