@@ -250,9 +250,10 @@ struct Database {
     func queryTableInDistributionWork() -> [String] {
         var resultString:[String] = []
         for item in (try! db.prepare(TABLE_LAMP)) {
-            if("\(item[TABLE_PHOTO_TYPE])" == "food"){
-                resultString.append( "\(item[TABLE_WORKDAY])")
-            }
+//            if("\(item[TABLE_PHOTO_TYPE])" == "food"){
+//                resultString.append( "\(item[TABLE_WORKDAY])")
+//            }
+            resultString.append( "\(item[TABLE_WORKDAY])")
             
            
         }
@@ -263,10 +264,10 @@ struct Database {
     func queryTableInDistributionWeekend() -> [String] {
         var resultString:[String] = []
         for item in (try! db.prepare(TABLE_LAMP)) {
-            if("\(item[TABLE_PHOTO_TYPE])" == "food"){
-                resultString.append( "\(item[TABLE_WEEKEND])")
-            }
-            
+//            if("\(item[TABLE_PHOTO_TYPE])" == "food"){
+//                resultString.append( "\(item[TABLE_WEEKEND])")
+//            }
+            resultString.append( "\(item[TABLE_WEEKEND])")
            
         }
         return resultString
