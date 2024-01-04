@@ -131,7 +131,7 @@ class SettingViewController: QDCommonTableViewController {
         
         
         
-        let data2 = QMUIStaticTableViewCellData(identifier: Int(UIInterfaceOrientationMask.landscapeLeft.rawValue), text: "是否允许手动上传", didSelectTarget: nil,
+        let data2 = QMUIStaticTableViewCellData(identifier: Int(UIInterfaceOrientationMask.landscapeLeft.rawValue), text: "Suggested eating window", didSelectTarget: nil,
                                                 didSelectAction: nil,
                                                 accessoryType: .switch,
                                                 accessoryValueObject: hand as AnyObject, // switch 类型的，可以通过传一个 NSNumber 对象给 accessoryValueObject 来指定这个 switch.on 的值
@@ -142,7 +142,7 @@ class SettingViewController: QDCommonTableViewController {
             cellDataSections: [
                 // section 0
                 
-                [QMUIStaticTableViewCellData(identifier: kIdentifierForDoneCell, text: "隐私权限说明", didSelectTarget: self, didSelectAction: #selector(handleDoneCellEvent1(_:))),
+                [QMUIStaticTableViewCellData(identifier: kIdentifierForDoneCell, text: "Privacy", didSelectTarget: self, didSelectAction: #selector(handleDoneCellEvent1(_:))),
                 ],
                 
                 
@@ -153,14 +153,14 @@ class SettingViewController: QDCommonTableViewController {
 //                ],
                 
                 
-                [QMUIStaticTableViewCellData(identifier: Int(UIInterfaceOrientationMask.portrait.rawValue), text: "是否推荐食物", didSelectTarget: nil,
+                [QMUIStaticTableViewCellData(identifier: Int(UIInterfaceOrientationMask.portrait.rawValue), text: "Whether to recommend food", didSelectTarget: nil,
                                              didSelectAction: nil,
                                              accessoryType: .switch,
                                              accessoryValueObject: food as AnyObject, // switch 类型的，可以通过传一个 NSNumber 对象给 accessoryValueObject 来指定这个 switch.on 的值
          accessoryTarget: self,
          accessoryAction: #selector(handleSwitchCellEvent0(_:))),
                  data2,
-                 QMUIStaticTableViewCellData(identifier: Int(UIInterfaceOrientationMask.landscapeRight.rawValue), text: "选择时间模式", didSelectTarget: nil,
+                 QMUIStaticTableViewCellData(identifier: Int(UIInterfaceOrientationMask.landscapeRight.rawValue), text: "Time selection display mode switch", didSelectTarget: nil,
                                              didSelectAction: nil,
                                              accessoryType: .switch,
                                              accessoryValueObject: time as AnyObject, // switch 类型的，可以通过传一个 NSNumber 对象给 accessoryValueObject 来指定这个 switch.on 的值
@@ -173,16 +173,16 @@ class SettingViewController: QDCommonTableViewController {
                 
                 
                 // section 1
-                [QMUIStaticTableViewCellData(identifier: kIdentifierForDoneCell, text: "同步数据", didSelectTarget: self, didSelectAction: #selector(handleDoneCellEvent2(_:))),
+                [QMUIStaticTableViewCellData(identifier: kIdentifierForDoneCell, text: "Synchronous data", didSelectTarget: self, didSelectAction: #selector(handleDoneCellEvent2(_:))),
                 ],
-                [QMUIStaticTableViewCellData(identifier: kIdentifierForDoneCell, text: "切换账号", didSelectTarget: self, didSelectAction: #selector(handleDoneCellEvent3(_:))),
+                [QMUIStaticTableViewCellData(identifier: kIdentifierForDoneCell, text: "Switch account", didSelectTarget: self, didSelectAction: #selector(handleDoneCellEvent3(_:))),
                 ],
-                [QMUIStaticTableViewCellData(identifier: kIdentifierForDoneCell, text: "退出登录", didSelectTarget: self, didSelectAction: #selector(handleDoneCellEvent4(_:))),
+                [QMUIStaticTableViewCellData(identifier: kIdentifierForDoneCell, text: "Log out", didSelectTarget: self, didSelectAction: #selector(handleDoneCellEvent4(_:))),
                 ]])
         
         orientationLabel = QMUILabel(with: UIFontMake(14), textColor: UIColorGray7)
         let attributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font : UIFontMake(14), NSAttributedString.Key.foregroundColor: UIColorGray7, NSAttributedString.Key.paragraphStyle: NSMutableParagraphStyle(lineHeight: 22, lineBreakMode: .byWordWrapping, textAlignment: .center)]
-        orientationLabel.attributedText = NSAttributedString(string: "当前界面支持的方向：\n\(descriptionString(supportedOrientationMask))", attributes: attributes)
+
         orientationLabel.numberOfLines = 2
         orientationLabel.contentEdgeInsets = UIEdgeInsets(top: 24, left: 24, bottom: 24, right: 24)
         orientationLabel.sizeToFit()

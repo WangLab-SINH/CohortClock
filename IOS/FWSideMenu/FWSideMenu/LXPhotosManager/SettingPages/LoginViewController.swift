@@ -34,7 +34,7 @@ class LoginViewController: UIViewController{
         textField.layer.cornerRadius = 4.0
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.layer.borderWidth = 1
-        textField.placeholder = "请输入账号"
+        textField.placeholder = "Please enter your account"
         textField.keyboardType = .emailAddress
         return textField
     }()
@@ -44,7 +44,7 @@ class LoginViewController: UIViewController{
         textField.layer.cornerRadius = 4.0
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.layer.borderWidth = 1
-        textField.placeholder = "请输入密码"
+        textField.placeholder = "Please enter your password"
         textField.isSecureTextEntry = true
         return textField
     }()
@@ -55,7 +55,7 @@ class LoginViewController: UIViewController{
         button.layer.cornerRadius = 4.0
        
         button.setTitleColor(.black, for: .normal)
-        button.setTitle("注册账号", for: .normal)
+        button.setTitle("Sign up", for: .normal)
         button.addTarget(self, action: #selector(handleRegister), for: .touchUpInside)
         return button
     }()
@@ -65,7 +65,7 @@ class LoginViewController: UIViewController{
         button.layer.cornerRadius = 4.0
         button.backgroundColor = UIColor.rgb(41, 128, 185)
         button.setTitleColor(.white, for: .normal)
-        button.setTitle("登录", for: .normal)
+        button.setTitle("Login", for: .normal)
         button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
         return button
     }()
@@ -76,9 +76,9 @@ class LoginViewController: UIViewController{
         
         logTextView = UITextView()
         logTextView.font = UIFont.systemFont(ofSize: 50)
-        logTextView.text = "登  录"
+        logTextView.text = "Login"
 
-        self.title = "登录"
+        self.title = "Login"
      view.backgroundColor = UIColor.white
         
         //view.addSubview(logoImageView)
@@ -161,9 +161,9 @@ class LoginViewController: UIViewController{
                    encoder: URLEncodedFormParameterEncoder.default).responseString { response in
             debugPrint(response)
                     if(response.value == "no"){
-                        QMUITips.showError(text: "登陆失败")
+                        QMUITips.showError(text: "Fail to login in")
                     }else{
-                        QMUITips.showSucceed(text: "登陆成功")
+                        QMUITips.showSucceed(text: "Login in successfully")
                    }
                 }
         
@@ -176,7 +176,7 @@ class LoginViewController: UIViewController{
     @objc func handleRegister() {
         var viewController: UIViewController
         viewController = RegisterViewController()
-        viewController.title = "注册"
+        viewController.title = "Sign up"
         navigationController?.pushViewController(viewController, animated: true)
     }
 }

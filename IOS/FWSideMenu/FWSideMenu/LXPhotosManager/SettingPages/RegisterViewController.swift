@@ -38,7 +38,7 @@ class RegisterViewController: UIViewController{
         textField.layer.cornerRadius = 4.0
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.layer.borderWidth = 1
-        textField.placeholder = "请输入账号"
+        textField.placeholder = "Please enter your account"
         textField.keyboardType = .emailAddress
         return textField
     }()
@@ -48,7 +48,7 @@ class RegisterViewController: UIViewController{
         textField.layer.cornerRadius = 4.0
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.layer.borderWidth = 1
-        textField.placeholder = "请输入密码"
+        textField.placeholder = "Please enter your password"
         textField.isSecureTextEntry = true
         return textField
     }()
@@ -60,7 +60,7 @@ class RegisterViewController: UIViewController{
         button.layer.cornerRadius = 4.0
         button.backgroundColor = UIColor.rgb(41, 128, 185)
         button.setTitleColor(.white, for: .normal)
-        button.setTitle("确认", for: .normal)
+        button.setTitle("Save", for: .normal)
         button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
         return button
     }()
@@ -72,7 +72,7 @@ class RegisterViewController: UIViewController{
         
         logTextView = UITextView()
         logTextView.font = UIFont.systemFont(ofSize: 50)
-        logTextView.text = "注  册"
+        logTextView.text = "Sign up"
                      
      view.backgroundColor = UIColor.white
         
@@ -154,11 +154,11 @@ class RegisterViewController: UIViewController{
                    encoder: URLEncodedFormParameterEncoder.default).responseString { response in
             debugPrint(response)
                     if(response.value == "no"){
-                        QMUITips.showError(text: "注册失败")
+                        QMUITips.showError(text: "Fail to sign up")
                     }else{
                         var viewController: UIViewController
                         viewController = LoginViewController()
-                        viewController.title = "注册"
+                        viewController.title = "Sign up"
                         self.navigationController?.pushViewController(viewController, animated: true)
                    }
         // Log in stuff
