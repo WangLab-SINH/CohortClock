@@ -14,7 +14,7 @@ CohortClock consists of three components: the client-side, server-side, and admi
 
 
 ## Mobile App Download and Demo Links:
-* Android: You can download the Android version of our app from the following site: [Android version download site](https://github.com/WangLab-SINH/CohortClock/blob/main/app-release.apk)
+* Android: You can download the Android version of our app from the following site: [Android version download site](https://github.com/WangLab-SINH/CohortClock/raw/main/app-release.apk)
 
 * iOS: Due to iOS restrictions, our app is not available on the App Store. However, we have released a beta version on the official Apple-recommended software testing platform, TestFlight. To install the iOS version, you should have a developer account and please send an email with your registered Apple ID to chiyuhao2018@sibs.ac.cn. We will add you to the list of testers, and you will receive an invitation to download the app via TestFlight.
 
